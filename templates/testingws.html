@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.IO + FastAPI</title>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <input id="name" placeholder="Type a message" value="udit"/>
+    <button id="connect" onclick="connectToSocket()">Connect</button>
+    <br>
+    <input id="msg" placeholder="Type a message" disabled/>
+    <button id="sendmsg" onclick="sendMessage()" disabled>Send</button>
+    <div class="ChatRoom" id="chatbox"></div>
+    <script>
+    const socket = io("http://127.0.0.1:8000");
+    connectToSocket()
+    let travel = {
+        "msg": "",
+        "qkey": 0
+    }
+    
+    const updatedChat = (from, data) =>{
+        const chatbox = document.getElementById('chatbox');
+        if (data == ""){
+            chatbox.innerHTML += ""
+        }else{
+            chatbox.innerHTML+=`<br><span>${from} : ${data}</span>`
+        }
+    }
+
+    async function connectToSocket() {
+        const name = document.getElementById("name").value;
+        const msg = document.getElementById('msg');
+        const button = document.getElementById("connect");
+        const sendmsg = document.getElementById('sendmsg');
+        button.disabled = true;
+        msg.disabled = false;
+        sendmsg.disabled = false;
+        await socket.emit("set_name", { name: name })
+    }
+    async function sendMessage() {
+        const name = document.getElementById("name").value;
+        const msg = document.getElementById("msg").value;
+        updatedChat(name, msg)
+        travel.msg = msg;
+        await socket.emit("my_event", travel);
+    }
+
+    socket.on("connect", () => {
+        console.log("Connected:", socket.id);
+    });
+
+    socket.on("response", (data) => {
+        travel.qkey = data['qkey']
+        updatedChat("MedAi",data['msg']);
+        console.log(data)
+    })
+    </script>
+
+</body>
+</html>
