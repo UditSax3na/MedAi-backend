@@ -7,7 +7,7 @@ PARENT_DIR = Path(__file__).resolve().parent.parent
 
 # paths for datasets
 DATASET_PATH = PARENT_DIR / 'Datasets'
-TRUE_DATASET = DATASET_PATH,'Dataset.csv'
+TRUE_DATASET = DATASET_PATH / 'Dataset.csv'
 SEVERITY_DATASET = DATASET_PATH / 'Symptom_severity.csv'
 DESCRIPTION_DATASET = DATASET_PATH / 'symptom_Description.csv'
 PRECAUTION_DATASET = DATASET_PATH / 'symptom_precaution.csv'

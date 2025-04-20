@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Socket.IO + FastAPI</title>
+  <title>Testing and Debugging</title>
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 </head>
 <body>
@@ -15,14 +15,22 @@
     const socket = io("http://127.0.0.1:8000");
     connectToSocket()
     let travel = {
-        "msg": "",
-        "qkey": 0
+        "answer": "",
+        "qkey": 1,
+        "ic":-1,
+        "ql":[],
+        "p":NaN,
+        "r":NaN
     }
-    
-    const updatedChat = (from, data) =>{
+    let ql = {}
+    let i = 0
+    let answerStack;
+    const updatedChat = (from, data, mode=0) =>{
         const chatbox = document.getElementById('chatbox');
         if (data == ""){
             chatbox.innerHTML += ""
+        }else if(mode===1){
+            chatbox.innerHTML+=`<br><span>${data}?</span>`
         }else{
             chatbox.innerHTML+=`<br><span>${from} : ${data}</span>`
         }
@@ -40,10 +48,31 @@
     }
     async function sendMessage() {
         const name = document.getElementById("name").value;
-        const msg = document.getElementById("msg").value;
-        updatedChat(name, msg)
-        travel.msg = msg;
-        await socket.emit("my_event", travel);
+        const msg = document.getElementById("msg");
+        const qk = msg.getAttribute('data-question-key');
+        if (qk==5){
+            if (msg.value==="yes" || msg.value==="no"){
+                updatedChat(data=ql[i],mode=1,"");
+                answerStack[ql[i]]=msg.value
+                i+=1;
+                if (i===ql.length){
+                    msg.setAttribute('data-question-key', 0)
+                }
+            }else{
+                updatedChat("MedAi", "Answer in yes or no !")
+            }
+        }else{
+            if (i===0){
+                travel.answer = msg.value;
+                await socket.emit("my_event", travel);
+            }else{
+                travel.answer = answerStack;
+                console.log("this is answerStack", answerStack);
+                await socket.emit("my_event", travel);
+            }
+        }
+        updatedChat(name, msg.value)
+        msg.value="";
     }
 
     socket.on("connect", () => {
@@ -51,8 +80,26 @@
     });
 
     socket.on("response", (data) => {
+        const msg = document.getElementById("msg");
         travel.qkey = data['qkey']
-        updatedChat("MedAi",data['msg']);
+        if (data['ql'].length!=0){
+            let str = ""
+            data['ql'].forEach((key, element) => {
+                if (key!=data['ql'].length-1) str+=element+"<br>"
+                else str+=element
+            });
+            if (data['qkey']==5){
+                updatedChat("MedAi", data['q'])
+                msg.setAttribute('data-question-key', data['qkey'])
+                ql = data['ql']
+                updatedChat("MedAi", ql[i])
+                i++;
+            }else{
+                updatedChat("MedAi",str);
+            }
+        }else{
+            updatedChat("MedAi",data['q']);
+        }
         console.log(data)
     })
     </script>

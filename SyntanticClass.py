@@ -2,7 +2,6 @@ import numpy as np
 import itertools
 import re
 
-
 class SyntanticClass:
     def __init__(self, all_symp_pr):
         self.__all_symp_pr__ = all_symp_pr

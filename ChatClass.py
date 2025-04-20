@@ -27,19 +27,27 @@ class ChatClass:
         else:
             return "It might not be that bad but you should take precautions.", 0
 
-    def related_sym(self, psym1, key: int):
-        dic = {
-            "q": "searches related to input: ",
-            "qkey": key + 1,
-            "ic": -1,
-            "ql": [],
-            "p": None,
-            "r": None
-        }
-        dic["ql"] = [f"{num}) {self.__pd__.__clean_symp__(it)}" for num, it in enumerate(psym1)]
-        return dic
+    def related_sym(self,sym, psym1, key: int):
+        m = [f"{num}) {self.__pd__.__clean_symp__(it)}" for num, it in enumerate(psym1)]
+        if len(m)==1:
+            if m[0].lower() == sym.lower():
+                return sym
+        else:
+            dic = {
+                "q": "searches related to input: ",
+                "qkey": key + 1,
+                "ic": -1,
+                "ql": [],
+                "p": None,
+                "r": None
+            }
+            print(f"psym1 : {psym1} and enumerate(psym1) : {enumerate(psym1)}")
+            dic["ql"] = m
+            print(f'this is dic : {dic}')
+            return dic
 
     def main_sp(self, name, all_symp_col, answer: dict):
+        print(f"This is answer : {answer}")
         dic = {
             "q": "Enter the main symptom you are experiencing Mr/Ms " + name,
             "qkey": 1,
@@ -52,19 +60,21 @@ class ChatClass:
         if answer['qkey'] == 0:
             return dic, 0
         elif answer['qkey'] in [1, 2]:
-            a, self.sim1, self.psym1 = self.first_initial_sym(answer)
-            if isinstance(a, dict):
+            a, self.sim1, self.psym1 = self.first_initial_sym(self.sym1, self.sim1, answer)
+            if isinstance(a, dict) and self.sim1 == None and self.psym1==None:
                 return a, 0
             else:
+                self.sym1 = a
                 self.user_inputs.append(a)
                 dic["q"] = "Enter a second symptom you are experiencing Mr/Ms " + name
                 dic["qkey"] = 3
                 return dic, 0
         elif answer['qkey'] == 3:
-            a, self.sim2, self.psym2 = self.first_initial_sym(answer)
-            if isinstance(a, dict):
+            a, self.sim2, self.psym2 = self.first_initial_sym(self.sym1, self.sim2, answer)
+            if isinstance(a, dict) and self.sim2 == None and self.psym1==None:
                 return a, 0
             else:
+                self.sym2 = a
                 self.user_inputs.append(a)
                 if self.sim1 == 0 or self.sim2 == 0:
                     self.sim1, self.psym1 = self.__sem__.semantic_similarity(self.user_inputs[0], self.__pd__.__all_symp_pr__)
@@ -76,14 +86,16 @@ class ChatClass:
                     self.psym1 = self.psym2
                 if self.sim2 == 0:
                     self.psym2 = self.psym1
-
+                self.psym2 = int(self.psym2) if self.psym2.isdigit() else self.psym2
+                self.psym1 = int(self.psym1) if self.psym1.isdigit() else self.psym1
                 self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                print(f"This is self.diseases : {self.diseases}")
                 self.diseases = self.__sem__.possible_diseases(disease=self.diseases, l=self.all_sym)
                 dic["ic"] += 1
                 k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic["ic"]])
-                dic["q"] = "Are you experiencing any of the following?"
                 dic["ql"] = k
                 dic["qkey"] = 4
+                dic["q"] = "Are you experiencing any of the following?"
                 return dic, 0
         elif answer['qkey'] == 4:
             if isinstance(answer['answer'], str):
@@ -168,13 +180,17 @@ class ChatClass:
         else:
             return result
 
-    def first_initial_sym(self, answer):
+    def first_initial_sym(self, sym, sim, answer):
         if answer["qkey"] in [1, 3]:
-            self.sym1 = self.__pd__.__nlp__.preprocess_sym(answer['answer'])
-            self.sim1, self.psym1 = self.__syn__.syntactic_similarity(self.sym1, self.__pd__.__all_symp_pr__)
-            if self.sim1 == 1:
-                return self.related_sym(self.psym1, answer["qkey"]), None, None
+            sym = self.__pd__.__nlp__.preprocess_sym(answer['answer'])
+            sim, psym = self.__syn__.syntactic_similarity(sym, self.__pd__.__all_symp_pr__)
+            print(f"sym, psym, sim :{sym}, {psym}, {sim}")
+            if sim == 1:
+                a = self.related_sym(sym, psym, answer["qkey"])
+                if a == sym:
+                    return sym, sim, answer['answer'] 
+                return a, None, None
             else:
-                return self.sym1, self.sim1, answer['answer']
+                return sym, sim, answer['answer']
         else:
-            return self.sym1, self.sim1, answer['answer']
+            return sym, sim, answer['answer']

@@ -10,8 +10,8 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import LabelEncoder
 
-from Constants import *
-from NlpClass import *
+from .Constants import *
+from .NlpClass import *
 
 class PredictDiseases:
     def __init__(self):

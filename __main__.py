@@ -23,6 +23,9 @@ class UserConnected:
 
     def displaySelf(self):
         print(f"self.sid : {self.sid} and self.msgStack : {self.msgStack}")
+    
+    def resetMsgStack(self):
+        self.msgStack = []
 
 class ConnectionManager:
     def __init__(self):
@@ -39,7 +42,7 @@ class ConnectionManager:
     def getInputInStack(self, sid: str, data: dict):
         for user in self.ConnectedUser:
             if user.sid == sid:
-                user.msgStack.append(data['msg'])
+                user.msgStack.append(data)
 
     def displayUsersInfo(self):
         for user in self.ConnectedUser:
@@ -78,7 +81,6 @@ app = socketio.ASGIApp(sio, fastapiapp)
 
 @sio.event
 async def connect(sid, environ):
-    print(f"this is environ : {environ}")
     if manager.healthCheckUp():
         await sio.disconnect(sid)
     else:
@@ -98,8 +100,11 @@ async def my_event(sid, data):
     manager.displayUsersInfo()
     user = manager.searchUsers(sid)
     questdic = user.chat.chat_sp(user.name, data)
+    if questdic['qkey'] == 0:
+        user.resetMsgStack()
     # if nextQuestion == true
         # sends the question 
+    print(f"this is questdic: {questdic}")
     await sio.emit("response", questdic, to=sid)
     # else 
         # sends the response with -10 key (means the prediction is done + serverity , and precautions has been shown )
@@ -108,7 +113,13 @@ async def my_event(sid, data):
 async def set_name(sid, data):
     user = manager.searchUsers(sid)
     user.name=data['name']
-    await sio.emit("response", {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"QuestionList": [], "p": None, "r": None}, to=sid)
+    await sio.emit("response", {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"ql": [], "p": None, "r": None}, to=sid)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
+
+"""
+cd ..
+python -m MedAIBackend
+"""

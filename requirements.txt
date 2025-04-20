@@ -7,3 +7,4 @@ numpy
 joblib
 nltk
 jinja2
+scikit-learn
