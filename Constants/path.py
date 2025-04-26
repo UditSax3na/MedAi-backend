@@ -2,7 +2,6 @@
 from pathlib import Path
 
 # paths for parent directory
-# PARENT_DIR = dirname(dirname(__file__))
 PARENT_DIR = Path(__file__).resolve().parent.parent
 
 # paths for datasets
@@ -11,6 +10,7 @@ TRUE_DATASET = DATASET_PATH / 'Dataset.csv'
 SEVERITY_DATASET = DATASET_PATH / 'Symptom_severity.csv'
 DESCRIPTION_DATASET = DATASET_PATH / 'symptom_Description.csv'
 PRECAUTION_DATASET = DATASET_PATH / 'symptom_precaution.csv'
+CLEANSYM_DATASET = DATASET_PATH / 'cleanDataset.pkl'
 
 # paths for model and encoder
 STORAGE_PATH = PARENT_DIR / 'Storage'
@@ -19,5 +19,14 @@ SAVED_ENCODER_PATH = STORAGE_PATH / 'SavedEncoders'
 KNNMODEL_PATH = SAVED_MODEL_PATH / "KNN_model.pkl"
 LENCODER_PATH = SAVED_ENCODER_PATH / "encoder.pkl"
 
+# log folder
+LOGFOLDER = PARENT_DIR / 'log'
+LOGFILE = LOGFOLDER / 'log.txt'
+
 # templates
 TEMPLATES_PATH = PARENT_DIR / 'templates'
+
+# function for making all the folder that's is not present in the root directory (not file)
+def ensure_dirs():
+    for path in [DATASET_PATH, STORAGE_PATH, SAVED_MODEL_PATH, SAVED_ENCODER_PATH, LOGFOLDER]:
+        path.mkdir(parents=True, exist_ok=True)

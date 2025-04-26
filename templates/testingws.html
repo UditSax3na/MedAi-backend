@@ -22,9 +22,9 @@
         "p":NaN,
         "r":NaN
     }
-    let ql = {}
+    let ql = []
     let i = 0
-    let answerStack;
+    let answerStack = [];
     const updatedChat = (from, data, mode=0) =>{
         const chatbox = document.getElementById('chatbox');
         if (data == ""){
@@ -32,7 +32,7 @@
         }else if(mode===1){
             chatbox.innerHTML+=`<br><span>${data}?</span>`
         }else{
-            chatbox.innerHTML+=`<br><span>${from} : ${data}</span>`
+            chatbox.innerHTML+=`<br><span>${from}: ${data}</span>`
         }
     }
 
@@ -50,28 +50,35 @@
         const name = document.getElementById("name").value;
         const msg = document.getElementById("msg");
         const qk = msg.getAttribute('data-question-key');
-        if (qk==5){
+
+        // 1) update the chat box with user msg
+        // 2) then clear the msg box
+        updatedChat(name, msg.value)
+        
+        if (qk==4){
             if (msg.value==="yes" || msg.value==="no"){
-                updatedChat(data=ql[i],mode=1,"");
-                answerStack[ql[i]]=msg.value
-                i+=1;
+                console.log(ql[i])
+                if (msg.value==="yes") answerStack.push(ql[i-1])
+                else{
+            i=ql.length-1
+            console.log("here are we!");
+                }
+                i++;
                 if (i===ql.length){
                     msg.setAttribute('data-question-key', 0)
-                }
+                    i=0;
+                    travel.answer = answerStack;
+                    console.log("this is answerStack", answerStack);
+                    console.log("this is travel", travel);
+                    await socket.emit("my_event", travel);
+                }else updatedChat("MedAi", ql[i], mode=1)
             }else{
                 updatedChat("MedAi", "Answer in yes or no !")
             }
         }else{
-            if (i===0){
-                travel.answer = msg.value;
-                await socket.emit("my_event", travel);
-            }else{
-                travel.answer = answerStack;
-                console.log("this is answerStack", answerStack);
-                await socket.emit("my_event", travel);
-            }
+            travel.answer = msg.value;
+            await socket.emit("my_event", travel);
         }
-        updatedChat(name, msg.value)
         msg.value="";
     }
 
@@ -82,25 +89,33 @@
     socket.on("response", (data) => {
         const msg = document.getElementById("msg");
         travel.qkey = data['qkey']
+        travel.ic = data['ic']
+        console.log(data);
         if (data['ql'].length!=0){
             let str = ""
-            data['ql'].forEach((key, element) => {
-                if (key!=data['ql'].length-1) str+=element+"<br>"
-                else str+=element
+            data['ql'].forEach((ele, key) => {
+                if (key!=data['ql'].length-1) str+=ele+"<br>"
+                else str+=ele
             });
-            if (data['qkey']==5){
+            if (data['qkey']==4){
                 updatedChat("MedAi", data['q'])
                 msg.setAttribute('data-question-key', data['qkey'])
                 ql = data['ql']
                 updatedChat("MedAi", ql[i])
                 i++;
+
             }else{
                 updatedChat("MedAi",str);
             }
+        }else if (data['qkey']==12) {
+            updatedChat("MedAi", data['p']);
+            updatedChat("MedAi", data['q']);
+        }else if(data['qkey']==13){
+            updatedChat("MedAi", data['r']);
+            updatedChat("MedAi", data['q']);
         }else{
             updatedChat("MedAi",data['q']);
         }
-        console.log(data)
     })
     </script>
 

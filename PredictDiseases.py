@@ -3,6 +3,7 @@ import numpy as np
 import joblib
 import os
 import csv
+import pickle
 
 from nltk.corpus import wordnet as wn
 from sklearn.model_selection import train_test_split
@@ -10,18 +11,22 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import LabelEncoder
 
-from .Constants import *
+from .Constants.path import *
 from .NlpClass import *
 
 class PredictDiseases:
     def __init__(self):
         self.__df__ = pd.read_csv(TRUE_DATASET)
         self.__all_symp_col__ = list(self.__df__.columns[:-1])
-        self.__all_symp__ = [self.__clean_symp__(sym) for sym in (self.__all_symp_col__)]
+        self.__all_symp__ = [self.__clean_symp__(sym) for sym in self.__all_symp_col__]
         self.__nlp__ = NlpClass()
         self.__all_symp_pr__=[self.__nlp__.preprocess_sym(sym) for sym in self.__all_symp__]
-        self.__all_symp_pr__.sort()
-        self.__col_dict__ = dict(zip(self.__all_symp_pr__, self.__all_symp_col__))
+        self.__col_dict__ = {}
+        if CLEANSYM_DATASET.exists():
+            self.loadZipDic()
+        else:
+            self.__col_dict__ = dict(zip(self.__all_symp_pr__, self.__all_symp_col__))
+            self.saveZipDic()
         self.__X__ = self.__df__.iloc[:, :-1]
         self.__le__ = joblib.load(LENCODER_PATH) if not(os.path.exists(LENCODER_PATH)) else LabelEncoder()
         self.__y__ = self.__le__.fit_transform(self.__df__.iloc[:, -1])
@@ -66,6 +71,9 @@ class PredictDiseases:
         return [encoded_vector]  # Ensure it's in 2D format for prediction
 
     def predict_disease(self, user_symptoms, all_symptoms, label_encoder):
+        """
+        used to predict the disease from the user given symptoms
+        """
         user_symptoms = [sym.replace(" ", "_") for sym in user_symptoms]
         encoded_input = self.encode_symptoms(user_symptoms, all_symptoms)
         encoded_input_df = pd.DataFrame(encoded_input, columns=all_symptoms)
@@ -73,6 +81,9 @@ class PredictDiseases:
         return label_encoder.inverse_transform([predicted_label])[0]
 
     def getDescription(self):
+        """
+        used to read the description from the description datasets
+        """
         with open(DESCRIPTION_DATASET) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
@@ -81,8 +92,10 @@ class PredictDiseases:
                 self.__description_list__.update(_description)
 
     def getSeverityDict(self):
+        """
+        used to read the severity from the serverity datasets
+        """
         with open(SEVERITY_DATASET) as csv_file:
-
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
             try:
@@ -93,10 +106,26 @@ class PredictDiseases:
                 pass
 
     def getprecautionDict(self):
+        """
+        used to read the precaution from the precaution datasets
+        """
         with open(PRECAUTION_DATASET) as csv_file:
-
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
             for row in csv_reader:
                 _prec={row[0]:[row[1],row[2],row[3],row[4]]}
                 self.__precautionDictionary__.update(_prec)
+
+    def saveZipDic(self):
+        """
+        use to save the __col_dict__ which contain the cleaned symptoms and symptoms from the og dataset
+        """
+        with open(CLEANSYM_DATASET, "wb") as f:
+            pickle.dump(self.__col_dict__, f)
+
+    def loadZipDic(self):
+        """
+        used to load the file and get the cleaned and non cleaned values
+        """
+        with open(CLEANSYM_DATASET, "rb") as f:
+            self.__col_dict__ = pickle.load(f)

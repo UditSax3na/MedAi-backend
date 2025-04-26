@@ -1,17 +1,18 @@
 # Sepecific Import
 from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 # Custom Modules Import
-from .Constants import TEMPLATES_PATH
+from .Constants.path import TEMPLATES_PATH, LOGFILE
 from . import router  
 from .ChatClass import ChatClass
 
 # Import
 import uvicorn
 import socketio
+import traceback
+import datetime
 
 class UserConnected:
     def __init__(self, sid: str, environ: dict):
@@ -95,19 +96,25 @@ def disconnect(sid):
 
 @sio.event
 async def my_event(sid, data):
-    print(f"Message received from {sid}: {data}")
-    manager.getInputInStack(sid, data)
-    manager.displayUsersInfo()
-    user = manager.searchUsers(sid)
-    questdic = user.chat.chat_sp(user.name, data)
-    if questdic['qkey'] == 0:
-        user.resetMsgStack()
-    # if nextQuestion == true
-        # sends the question 
-    print(f"this is questdic: {questdic}")
-    await sio.emit("response", questdic, to=sid)
-    # else 
-        # sends the response with -10 key (means the prediction is done + serverity , and precautions has been shown )
+    try:
+        print(f"Message received from {sid}: {data}")
+        manager.getInputInStack(sid, data)
+        manager.displayUsersInfo()
+        user = manager.searchUsers(sid)
+        questdic = user.chat.chat_sp(user.name, data)
+        print(f"this is questdic: {questdic}")
+        if questdic['qkey'] == 0:
+            user.resetMsgStack()
+        await sio.emit("response", questdic, to=sid)
+    except Exception as e:
+        print(f"!Error Occured!\nCheck the log file ->{LOGFILE}")
+        with open(LOGFILE, 'a') as myfile:  # Append mode
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            error_trace = traceback.format_exc()  # Full traceback
+            myfile.write(f"[{timestamp}] Error: {str(e)}\n")
+            myfile.write(f"[{timestamp}] Traceback:\n{error_trace}\n")
+            myfile.write(f"[{timestamp}] File Location: {__file__}\n")
+            myfile.write("-" * 60 + "\n")
 
 @sio.event
 async def set_name(sid, data):
@@ -119,7 +126,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
 
 
-"""
-cd ..
-python -m MedAIBackend
-"""
+# cd ..
+# python -m MedAIBackend
+# cd MedAIBackend
+# venv\Scripts\activate
