@@ -2,6 +2,7 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
 # Custom Modules Import
 from .Constants.path import TEMPLATES_PATH, LOGFILE
@@ -62,14 +63,20 @@ class ConnectionManager:
             
 sio = socketio.AsyncServer(
     async_mode="asgi",
-    cors_allowed_origins=[
-        "http://localhost:8000",
-        "http://127.0.0.1:8000"
-    ]
+    cors_allowed_origins='*',
+    allow_upgrades=True,
 )
 
 manager = ConnectionManager()
 fastapiapp = FastAPI()
+fastapiapp.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or ["http://localhost:3000"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 fastapiapp.include_router(router) # include router
 
 templates = Jinja2Templates(directory=TEMPLATES_PATH)
@@ -78,7 +85,8 @@ templates = Jinja2Templates(directory=TEMPLATES_PATH)
 async def index(request: Request):
     return templates.TemplateResponse("testingws.html", {"request": request})
 
-app = socketio.ASGIApp(sio, fastapiapp)
+# app = socketio.ASGIApp(sio, fastapiapp)
+app = socketio.ASGIApp(sio, other_asgi_app=fastapiapp)
 
 @sio.event
 async def connect(sid, environ):
@@ -95,17 +103,20 @@ def disconnect(sid):
     print("Client disconnected:", sid)
 
 @sio.event
-async def my_event(sid, data):
+async def my_event(sid, data: dict)->None:
     try:
-        print(f"Message received from {sid}: {data}")
-        manager.getInputInStack(sid, data)
-        manager.displayUsersInfo()
-        user = manager.searchUsers(sid)
-        questdic = user.chat.chat_sp(user.name, data)
-        print(f"this is questdic: {questdic}")
-        if questdic['qkey'] == 0:
-            user.resetMsgStack()
-        await sio.emit("response", questdic, to=sid)
+        if (data):
+            pass
+        else:
+            print(f"Message received from {sid}: {data}")
+            manager.getInputInStack(sid, data)
+            manager.displayUsersInfo()
+            user = manager.searchUsers(sid)
+            questdic = user.chat.chat_sp(user.name, data)
+            print(f"this is questdic: {questdic}")
+            if questdic['qkey'] == 0:
+                user.resetMsgStack()
+            await sio.emit("response", questdic, to=sid)
     except Exception as e:
         print(f"!Error Occured!\nCheck the log file ->{LOGFILE}")
         with open(LOGFILE, 'a') as myfile:  # Append mode
@@ -117,7 +128,7 @@ async def my_event(sid, data):
             myfile.write("-" * 60 + "\n")
 
 @sio.event
-async def set_name(sid, data):
+async def set_name(sid, data) -> None:
     user = manager.searchUsers(sid)
     user.name=data['name']
     await sio.emit("response", {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"ql": [], "p": None, "r": None}, to=sid)
