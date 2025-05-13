@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testing and Debugging</title>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+    <input id="name" placeholder="Type a name" value="udit"/>
+    <button id="connect" onclick="connectToSocket()">Connect</button>
+    <br><br>
+
+    <!-- Message Input -->
+    <input id="msg" placeholder="Type a message" disabled/>
+    <button id="sendmsg" onclick="sendMessage()" disabled>Send</button>
+    <br><br>
+
+    <!-- Image Input -->
+    <input type="file" id="imageInput" accept="image/*" disabled />
+    <button id="sendimg" onclick="sendImage()" disabled>Send Image</button>
+
+    <div class="ChatRoom" id="chatbox" style="margin-top: 20px;"></div>
+
+    <script>
+    const socket = io("http://127.0.0.1:8000");
+    connectToSocket()
+
+    let travel = {
+        "answer": "",
+        "atype":"str",
+        "qkey": 1,
+        "ic": -1,
+        "ql": [],
+        "p": NaN,
+        "r": NaN
+    }
+
+    let ql = []
+    let i = 0
+    let answerStack = []; // used for travel
+
+    const updatedChat = (from, data, mode = 0) => {
+        const chatbox = document.getElementById('chatbox');
+        if (data == "") return;
+        if (mode === 1) {
+            chatbox.innerHTML += `<br><span><strong>${from}:</strong> ${data}?</span>`;
+        } else {
+            chatbox.innerHTML += `<br><span><strong>${from}:</strong> ${data}</span>`;
+        }
+    }
+
+    async function connectToSocket() {
+        const name = document.getElementById("name").value;
+        const msg = document.getElementById('msg');
+        const imageInput = document.getElementById('imageInput');
+        const connectBtn = document.getElementById("connect");
+        const sendMsgBtn = document.getElementById('sendmsg');
+        const sendImgBtn = document.getElementById('sendimg');
+
+        connectBtn.disabled = true;
+        msg.disabled = false;
+        imageInput.disabled = false;
+        sendMsgBtn.disabled = false;
+        sendImgBtn.disabled = false;
+
+        await socket.emit("set_name", { name: name, email:"uditsaxena@gmail.com" });
+    }
+
+    async function sendMessage() {
+        const name = document.getElementById("name").value;
+        const msg = document.getElementById("msg");
+        const qk = msg.getAttribute('data-question-key');
+        travel.atype = 'str'
+        updatedChat(name, msg.value);
+
+        if (qk == 5) {
+            if (msg.value === "yes" || msg.value === "no") {
+                if (msg.value === "yes") answerStack.push(ql[i]);
+                // else i = ql.length - 1;
+
+                i++;
+                if (i === ql.length) {
+                    msg.setAttribute('data-question-key', 0);
+                    i = 0;
+                    travel.answer = answerStack;
+                    await socket.emit("my_event", travel);
+                } else {
+                    updatedChat("MedAi", ql[i], 1);
+                }
+            } else {
+                updatedChat("MedAi", "Answer in yes or no !");
+            }
+        } else {
+            travel.answer = msg.value;
+            await socket.emit("my_event", travel);
+        }
+
+        msg.value = "";
+        console.log("travel: ",travel);
+    }
+
+    function sendImage() {
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+        if (!file) return alert("Please select an image to send.");
+
+        const reader = new FileReader();
+        reader.onload = async function () {
+            const base64Image = reader.result.split(',')[1];  // Remove data:image/...;base64,
+            updatedChat("You", "[Image sent]");
+            console.log(base64Image);
+            travel.answer = base64Image
+            travel.atype = 'img'
+            console.log("travel: ",travel);
+            await socket.emit("my_event", travel);
+            fileInput.value = "";
+        };
+        reader.readAsDataURL(file);
+    }
+
+    socket.on("connect", () => {
+        console.log("Connected:", socket.id);
+    });
+
+    socket.on("response", (data) => {
+        console.log("data: ",data);
+        const msg = document.getElementById("msg");
+        travel.qkey = data['qkey']
+        travel.ic = data['ic']
+
+        if (data['ql'].length != 0) {
+            let str = ""
+            data['ql'].forEach((ele, key) => {
+                str += (key != data['ql'].length - 1) ? ele + "<br>" : ele;
+            });
+            if (data['qkey'] == 5) {
+                updatedChat("MedAi", data['q']);
+                msg.setAttribute('data-question-key', data['qkey']);
+                ql = data['ql'];
+                updatedChat("MedAi", ql[i]);
+                i++;
+            } else {
+                updatedChat("MedAi", str);
+            }
+        } else if (data['qkey'] == 12) {
+            updatedChat("MedAi", data['r']['desc']);
+            updatedChat("MedAi", data['r']['prev']);
+            updatedChat("MedAi", data['r']['last']);
+            updatedChat("MedAi", data['q']);
+        } else if (data['qkey'] == 13) {
+            updatedChat("MedAi", data['r']);
+            updatedChat("MedAi", data['q']);
+        } else {
+            updatedChat("MedAi", data['q']);
+        }
+    });
+    </script>
+</body>
+</html>
