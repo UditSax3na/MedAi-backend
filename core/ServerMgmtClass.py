@@ -74,6 +74,7 @@ class ConnectionManager:
         
         elif mode == 'email':
             for sido, user in self.ConnectedUser.items():
+                print(f"type of user : {type(user)}")
                 if user.email == sid:
                     return user, True
             return False, False
@@ -105,7 +106,6 @@ class UserDataLoader:
                 data = pickle.load(myfile)
 
             dic = {sid: UserConnected.from_dict(data) for sid, data in data.items()}
-            # print()
             for i, j in dic.items():
                 print(f"{i}: {j} and {j.email}")
             return dic

@@ -63,12 +63,15 @@ signal.signal(signal.SIGINT, manager.SignalHandler)
 signal.signal(signal.SIGTERM, manager.SignalHandler)
 atexit.register(manager.ExistCleanup)
 
+# for loading the data which existed before server stopped (backup data)
+if USERDATAFILE.exists() and manager.loadedDataStatus==False:
+    manager.ConnectedUser = manager.udl.LoadUsers()
+    manager.loadedDataStatus = True
+    for i, j in manager.ConnectedUser.items():
+        print(f"manager.ConnectedUser[{i}]: {j.email} and {j.chat.user_inputs} ")
+
 @sio.event
 async def connect(sid, env):
-    if USERDATAFILE.exists() and manager.loadedDataStatus==False:
-        manager.ConnectedUser = manager.udl.LoadUsers()
-        manager.loadedDataStatus = True
-        
     if manager.healthCheckUp():
         await sio.disconnect(sid)
     else:
@@ -108,9 +111,7 @@ async def my_event(sid, data: dict)->None:
             manager.getInputInStack(sid, data)
             if (data['atype']=='img'):
                 imgsym = user.symimg.Predict(data['answer'])
-                # print(f"imgsym: {imgsym}")
                 data.update({'answer': imgsym})
-                # print(f"data: {data}")
             questdic = user.chat.chat_sp(user.name, data)
             print(f"this is questdic: {questdic}")
             if questdic['qkey'] == 0:
@@ -132,40 +133,37 @@ async def my_event(sid, data: dict)->None:
 
 @sio.event
 async def set_name(sid, data) -> None:
-    print(f"this is data: {data}")
-    user, flag = manager.searchUsers(data['email'], mode='email')
-    # print(f"ConnectedUsers: {}")
-    manager.displayUsersInfo()
-    print(f"user: {user} and flag: {flag}")
-    if flag: # used to set the data before crash
-        tempsid = user.sid
-        user.sid = sid
-        del manager.ConnectedUser[tempsid]
-        manager.ConnectedUser[sid] = user
-        msglen = len(user.msgStack)
-        queslen = len(user.quesStack)
-        if user.msgStack[msglen-1]['qkey']==user.quesStack[queslen-1]['qkey']:
-            questdic = user.chat.chat_sp(user.name, user.msgStack[msglen-1]['qkey'])
-            print(f"this is questdic: {questdic}")
-            if questdic['qkey'] == 0:
-                user.resetMsgQuestStack()
-            await sio.emit("response", questdic, to=sid)
-            user.quesStack.append(questdic)
+    # user, flag = manager.searchUsers(data['email'], mode='email')
+    # if flag: # used to set the data before crash
+    #     tempsid = user.sid
+    #     user.sid = sid
+    #     del manager.ConnectedUser[tempsid]
+    #     manager.ConnectedUser[sid] = user
+    #     msglen = len(user.msgStack)
+    #     queslen = len(user.quesStack)
+    #     if user.msgStack[msglen-1]['qkey']==user.quesStack[queslen-1]['qkey']:
+    #         questdic = user.chat.chat_sp(user.name, user.msgStack[msglen-1]['qkey'])
+    #         print(f"this is questdic: {questdic}")
+    #         if questdic['qkey'] == 0:
+    #             user.resetMsgQuestStack()
+    #         await sio.emit("response", questdic, to=sid)
+    #         user.quesStack.append(questdic)
 
-        elif user.msgStack[msglen-1]['qkey']<user.quesStack[queslen-1]['qkey']:
-            await sio.emit('response', user.quesStack[queslen-1]['qkey'], to=sid)
+    #     elif user.msgStack[msglen-1]['qkey']<user.quesStack[queslen-1]['qkey']:
+    #         await sio.emit('response', user.quesStack[queslen-1], to=sid)
 
-        else:
-            await sio.emit('response', {'q':"internal error", 'qkey':-20}, to=sid)
+    #     else:
+    #         await sio.emit('response', {'q':"internal error", 'qkey':-20}, to=sid)
 
-    else:
-        user, _ = manager.searchUsers(sid)
-        user.name=data['name']
-        user.email=data['email']
-        dic = {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"ql": [], "p": None, "r": None}
-        print(f"dic : {dic}")
-        await sio.emit("response", dic, to=sid)
-        user.quesStack.append(dic)
+    # else:
+    user, _ = manager.searchUsers(sid)
+    user.name = data['name']
+    user.email = data['email']
+    print(f"user.email: {user.email}")
+    dic = {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"ql": [], "p": None, "r": None}
+    print(f"dic : {dic}")
+    await sio.emit("response", dic, to=sid)
+    user.quesStack.append(dic)
 
 if __name__ == "__main__":
     try:

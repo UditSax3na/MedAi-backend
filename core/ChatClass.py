@@ -31,13 +31,13 @@ class ChatClass:
 
     def to_dict(self):
         return {
-            "sim1":self.sim1,
-            "sim2":self.sim2,
-            "sym1":self.sym1,
-            "psym1":self.psym1,
-            "psym2":self.psym2,
-            "result":self.result,
-            "user_inputs":self.user_inputs
+            "sim1": self.sim1,
+            "sim2": self.sim2,
+            "sym1": self.sym1,
+            "psym1": self.psym1,
+            "psym2": self.psym2,
+            "result": self.result,
+            "user_inputs": self.user_inputs
         }
 
     def calc_condition(self, exp, days):
@@ -46,9 +46,9 @@ class ChatClass:
             if item in self.__pd__.__severityDictionary__.keys():
                 sum += self.__pd__.__severityDictionary__[item]
         if ((sum * days) / (len(exp))) > 13:
-            return "You should take the consultation from doctor.", 1
+            return "You should take the consultation from doctor."
         else:
-            return "It might not be that bad but you should take precautions.", 0
+            return "It might not be that bad but you should take precautions."
 
     def related_sym(self,sym, psym1, key: int):
         m = [self.__pd__.__clean_symp__(it) for num, it in enumerate(psym1)]
@@ -143,8 +143,8 @@ class ChatClass:
                 print(f"this is the ql: {ql}")
                 ql = list(set(ql))
                 self.__pd__.getSymDesc()
-                ql = [[i, self.__pd__.__symDesc__[i]]for i in ql if i.replace("_"," ") not in self.user_inputs] # find it
-                print(f"this is the ql: {ql}")
+                ql = [[i, self.__pd__.__symDesc__[i]] for i in ql if i.replace("_"," ") not in self.user_inputs] 
+                print(f"this is the ql: {ql} and this is user_inputs: {self.user_inputs}")
                 dic["q"] = "Are you experiencing any of the following?"
                 dic["ql"] = ql
                 dic["qkey"] = 5
@@ -206,9 +206,11 @@ class ChatClass:
 
         if sym == 1:
             if answer["qkey"] < 10:
+                self.__pd__.getDescription()
+                self.__pd__.getSeverityDict()
+                self.__pd__.getprecautionDict()
                 result = self.__pd__.__le__.inverse_transform([result[0]])[0]
                 self.result = result
-
                 if result is None:
                     dic['q'] = "Can you specify more what you feel or tap q to stop the conversation"
                     dic['qkey'] = 11
@@ -218,28 +220,25 @@ class ChatClass:
                     dic['p'] = result
                     self.result = result
                     dic['q'] = "How many days do you feel those symptoms?"
+                    dic['r']={
+                        "desc":self.__pd__.__description_list__[self.result],
+                        "prec":self.__pd__.__precautionDictionary__[self.result]
+                    }
                     dic['qkey'] = 11
                     return dic
                 
-                
             elif answer['qkey'] == 11:
-                self.__pd__.getDescription()
-                self.__pd__.getSeverityDict()
-                self.__pd__.getprecautionDict()
-                _, flag = self.calc_condition(self.all_sym, int(answer['answer']))
-                dic['r'] = {
-                    "desc":self.__pd__.__description_list__[self.result],
-                    "prec":self.__pd__.__precautionDictionary__[self.result],
-                    "last":"You should take the consultation from doctor"
-                    }
+                res = self.calc_condition(self.all_sym, int(answer['answer']))
+                dic['r'] = res
                 dic['q'] = "Do you need another medical consultation? (yes or no)"
                 dic['qkey'] = 12
                 return dic
             
             elif answer['qkey'] == 12:
                 if answer['answer'].lower() != "yes":
-                    dic['qkey'] = 0
+                    # dic['qkey'] = 0
                     dic['r'] = "Thank you for using our application!"
+                    dic['qkey']=200
                     return dic
                 
                 else:

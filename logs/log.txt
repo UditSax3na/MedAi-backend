@@ -1,26 +1,1357 @@
-[2025-05-13 18:27:05] Error: cannot unpack non-iterable NoneType object
-[2025-05-13 18:27:05] Traceback:
+[2025-04-25 16:13:23] Error: '1'
+[2025-04-25 16:13:23] Traceback:
 Traceback (most recent call last):
-  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
     questdic = user.chat.chat_sp(user.name, data)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 200, in chat_sp
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 133, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 96, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '1'
+
+[2025-04-25 16:13:23] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 16:14:53] Error: None
+[2025-04-25 16:14:53] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 133, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 96, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: None
+
+[2025-04-25 16:14:53] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 16:21:12] Error: '1'
+[2025-04-25 16:21:12] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 133, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 96, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '1'
+
+[2025-04-25 16:21:12] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 16:41:02] Error: '1'
+[2025-04-25 16:41:02] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 134, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 97, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '1'
+
+[2025-04-25 16:41:02] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 17:10:14] Error: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'dict'>
+[2025-04-25 17:10:14] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 134, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 82, in main_sp
+    self.sim1, self.psym1 = self.__sem__.semantic_similarity(self.user_inputs[0], self.__pd__.__all_symp_pr__)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\SemanticClass.py", line 44, in semantic_similarity
+    d = self.semanticD(symp_t, symp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\SemanticClass.py", line 22, in semanticD
+    doc1_p = self.__nlp__.preprocess(doc1).split(' ')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\NlpClass.py", line 9, in preprocess
+    nlp_doc=self.__nlp__(doc)
+            ^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1040, in __call__
+    doc = self._ensure_doc(text)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1134, in _ensure_doc
+    raise ValueError(Errors.E1041.format(type=type(doc_like)))
+ValueError: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'dict'>
+
+[2025-04-25 17:10:14] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 17:38:30] Error: '1'
+[2025-04-25 17:38:30] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 135, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 98, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '1'
+
+[2025-04-25 17:38:30] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 18:02:19] Error: '1'
+[2025-04-25 18:02:19] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 137, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 100, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: '1'
+
+[2025-04-25 18:02:19] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 18:24:27] Error: unhashable type: 'list'
+[2025-04-25 18:24:27] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 137, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 100, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+
+[2025-04-25 18:24:27] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 18:33:55] Error: unhashable type: 'list'
+[2025-04-25 18:33:55] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 137, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 100, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+
+[2025-04-25 18:33:55] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 18:37:16] Error: None
+[2025-04-25 18:37:16] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 132, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 95, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: None
+
+[2025-04-25 18:37:16] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 18:39:47] Error: 'f'
+[2025-04-25 18:39:47] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 132, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 95, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'f'
+
+[2025-04-25 18:39:47] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 18:42:13] Error: list index out of range
+[2025-04-25 18:42:13] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 132, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 99, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic["ic"]])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 18:42:13] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------ ## Traceback effect
+[2025-04-25 19:03:01] Error: list index out of range
+[2025-04-25 19:03:01] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 132, in chat_sp
+    if result is None:
+              ^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 99, in main_sp
+    self.user_inputs.append(answer['answer'])
+                                              
+IndexError: list index out of range
+
+[2025-04-25 19:03:01] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:05:16] Error: list index out of range
+[2025-04-25 19:05:16] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 125, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 92, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic["ic"]])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:05:16] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:08:16] Error: list index out of range
+[2025-04-25 19:08:16] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 126, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 93, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic["ic"]])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:08:16] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:11:10] Error: list index out of range
+[2025-04-25 19:11:10] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 126, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 93, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic["ic"]])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:11:10] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:14:03] Error: list index out of range
+[2025-04-25 19:14:03] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 126, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 93, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:14:03] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:26:25] Error: name 'psym1' is not defined
+[2025-04-25 19:26:25] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 127, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 87, in main_sp
+    print(f"psym1, psym2 : {psym1}, {psym2}")
+                            ^^^^^
+NameError: name 'psym1' is not defined. Did you mean: 'self.psym1'?
+
+[2025-04-25 19:26:25] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:27:56] Error: list index out of range
+[2025-04-25 19:27:56] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 127, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 94, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:27:56] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:29:41] Error: list index out of range
+[2025-04-25 19:29:41] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 127, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 94, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:29:41] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:44:31] Error: list index out of range
+[2025-04-25 19:44:31] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 127, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 94, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:44:31] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 19:55:27] Error: list index out of range
+[2025-04-25 19:55:27] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 128, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 95, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 19:55:27] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 20:02:20] Error: list index out of range
+[2025-04-25 20:02:20] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 128, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 95, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 20:02:20] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 20:07:30] Error: 'PredictDiseases' object has no attribute 'all_symp_pr__'
+[2025-04-25 20:07:30] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 130, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 90, in main_sp
+    print(f"This is self.__pd__.__all_symp_pr__ : {self.__pd__.__all_symp_pr__} and len(self.__pd__.__all_symp_pr__): {len(self.__pd__.all_symp_pr__)}")
+                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PredictDiseases' object has no attribute 'all_symp_pr__'. Did you mean: '__all_symp_pr__'?
+
+[2025-04-25 20:07:30] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-25 20:09:29] Error: list index out of range
+[2025-04-25 20:09:29] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 130, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 97, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+                                                                     ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-25 20:09:29] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 16:26:31] Error: 'high fever'
+[2025-04-26 16:26:31] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\\_libs\\hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'high fever'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 129, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 87, in main_sp
+    print(f"self.__pd__.__col_dict__[{self.psym1}], self.__pd__.__col_dict__[{self.psym2}] : {self.__pd__.__col_dict__[self.psym1]}, {self.__pd__.__col_dict__[self.psym2]}")
+                                                                                              ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\pandas\core\frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: 'high fever'
+
+[2025-04-26 16:26:31] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 16:43:05] Error: SemanticClass.symVONdisease() got an unexpected keyword argument 'l'
+[2025-04-26 16:43:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 129, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 96, in main_sp
+    k = self.__sem__.symVONdisease(disease = self.__pd__.__df__, l = self.diseases[dic["ic"]])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SemanticClass.symVONdisease() got an unexpected keyword argument 'l'
+
+[2025-04-26 16:43:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 16:47:56] Error: list index out of range
+[2025-04-26 16:47:56] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 129, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 113, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic["ic"]])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-04-26 16:47:56] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 17:23:57] Error: unhashable type: 'list'
+[2025-04-26 17:23:57] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 137, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 108, in main_sp
+    ql = list(set(ql))
+              ^^^^^^^
+TypeError: unhashable type: 'list'
+
+[2025-04-26 17:23:57] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 17:30:25] Error: unhashable type: 'list'
+[2025-04-26 17:30:25] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 137, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 108, in main_sp
+    ql = list(set(ql))
+              ^^^^^^^
+TypeError: unhashable type: 'list'
+
+[2025-04-26 17:30:25] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 17:40:40] Error: unhashable type: 'list'
+[2025-04-26 17:40:40] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 137, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 108, in main_sp
+    ql = list(set(ql))
+              ^^^^^^^
+TypeError: unhashable type: 'list'
+
+[2025-04-26 17:40:40] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:02:27] Error: None
+[2025-04-26 18:02:27] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 144, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 87, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: None
+
+[2025-04-26 18:02:27] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:03:35] Error: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[2025-04-26 18:03:35] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 105, in my_event
+    if questdic['qkey'] == 0:
+       ~~~~~~~~^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+
+[2025-04-26 18:03:35] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:06:42] Error: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[2025-04-26 18:06:42] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 105, in my_event
+    if questdic['qkey'] == 0:
+       ~~~~~~~~^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+
+[2025-04-26 18:06:42] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:08:39] Error: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[2025-04-26 18:08:39] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 105, in my_event
+    if questdic['qkey'] == 0:
+       ~~~~~~~~^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+
+[2025-04-26 18:08:39] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:11:21] Error: None
+[2025-04-26 18:11:21] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 144, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 87, in main_sp
+    self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: None
+
+[2025-04-26 18:11:21] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:12:09] Error: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[2025-04-26 18:12:09] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 106, in my_event
+    if questdic['qkey'] == 0:
+       ~~~~~~~~^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+
+[2025-04-26 18:12:09] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:16:05] Error: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[2025-04-26 18:16:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 106, in my_event
+    if questdic['qkey'] == 0:
+       ~~~~~~~~^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+
+[2025-04-26 18:16:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:21:02] Error: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+[2025-04-26 18:21:02] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 106, in my_event
+    if questdic['qkey'] == 0:
+       ~~~~~~~~^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+
+[2025-04-26 18:21:02] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:33:54] Error: None
+[2025-04-26 18:33:54] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 180, in chat_sp
+    else self.__pd__.__precautionDictionary__[self.result]
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: None
+
+[2025-04-26 18:33:54] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:38:39] Error: 'Tuberculosis'
+[2025-04-26 18:38:39] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 181, in chat_sp
+    else self.__pd__.__precautionDictionary__[self.result]
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Tuberculosis'
+
+[2025-04-26 18:38:39] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-04-26 18:41:58] Error: 'Jaundice'
+[2025-04-26 18:41:58] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 104, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 180, in chat_sp
+    dic['response'] = "You should take the consultation from doctor" if flag == 1 else self.__pd__.__precautionDictionary__[self.result]
+                                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'Jaundice'
+
+[2025-04-26 18:41:58] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:07:53] Error: 'image'
+[2025-05-11 20:07:53] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 118, in my_event
+    imgsym = user.symimg.Predict(data['image'])
+                                 ~~~~^^^^^^^^^
+KeyError: 'image'
+
+[2025-05-11 20:07:53] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:13:51] Error: list index out of range
+[2025-05-11 20:13:51] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 122, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 152, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 94, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-11 20:13:51] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:17:45] Error: list index out of range
+[2025-05-11 20:17:45] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 122, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 152, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 94, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-11 20:17:45] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:36:01] Error: name 'manage' is not defined
+[2025-05-11 20:36:01] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 113, in my_event
+    await sio.emit(eval(arg),to=sid)
+                   ^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'manage' is not defined. Did you mean: 'manager'?
+
+[2025-05-11 20:36:01] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:40:23] Error: Object of type UserConnected is not JSON serializable
+[2025-05-11 20:40:23] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 113, in my_event
+    dic={
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\async_server.py", line 178, in emit
+    await self.manager.emit(event, data, namespace, room=room,
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\async_manager.py", line 39, in emit
+    encoded_packet = pkt.encode()
+                     ^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\packet.py", line 64, in encode
+    encoded_packet += self.json.dumps(data, separators=(',', ':'))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserConnected is not JSON serializable
+
+[2025-05-11 20:40:23] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:43:45] Error: Object of type UserConnected is not JSON serializable
+[2025-05-11 20:43:45] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 122, in my_event
+    await sio.emit(dic,to=sid)
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\async_server.py", line 178, in emit
+    await self.manager.emit(event, data, namespace, room=room,
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\async_manager.py", line 39, in emit
+    encoded_packet = pkt.encode()
+                     ^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\packet.py", line 64, in encode
+    encoded_packet += self.json.dumps(data, separators=(',', ':'))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserConnected is not JSON serializable
+
+[2025-05-11 20:43:45] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:47:12] Error: Object of type UserConnected is not JSON serializable
+[2025-05-11 20:47:12] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 122, in my_event
+    await sio.emit("response", dic, to=sid)
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\async_server.py", line 178, in emit
+    await self.manager.emit(event, data, namespace, room=room,
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\async_manager.py", line 39, in emit
+    encoded_packet = pkt.encode()
+                     ^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\socketio\packet.py", line 64, in encode
+    encoded_packet += self.json.dumps(data, separators=(',', ':'))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserConnected is not JSON serializable
+
+[2025-05-11 20:47:12] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:53:02] Error: unterminated string literal (detected at line 1) (<string>, line 1)
+[2025-05-11 20:53:02] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.searchUsers('5JB_TWYITxZJ
+                        ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+[2025-05-11 20:53:02] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:53:47] Error: unexpected character after line continuation character (<string>, line 1)
+[2025-05-11 20:53:47] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.searchUsers(\'5JB_TWYITxZJ
+                         ^
+SyntaxError: unexpected character after line continuation character
+
+[2025-05-11 20:53:47] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:54:44] Error: invalid imaginary literal (<string>, line 1)
+[2025-05-11 20:54:44] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.searchUsers(5JB_TWYITxZJ
+                         ^
+SyntaxError: invalid imaginary literal
+
+[2025-05-11 20:54:44] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 20:56:53] Error: cannot unpack non-iterable NoneType object
+[2025-05-11 20:56:53] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 133, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 160, in chat_sp
     result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
     ^^^^^^^^^^^
 TypeError: cannot unpack non-iterable NoneType object
 
-[2025-05-13 18:27:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+[2025-05-11 20:56:53] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
-[2025-05-13 18:33:15] Error: invalid literal for int() with base 10: 'yes'
-[2025-05-13 18:33:15] Traceback:
+[2025-05-11 20:58:48] Error: cannot unpack non-iterable NoneType object
+[2025-05-11 20:58:48] Traceback:
 Traceback (most recent call last):
-  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 133, in my_event
     questdic = user.chat.chat_sp(user.name, data)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 228, in chat_sp
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 160, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-11 20:58:48] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 21:13:23] Error: '{' was never closed (<string>, line 1)
+[2025-05-11 21:13:23] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat.chat_sp(manager.ConnectedUser[0].name,{'answer': 'mild fever', 'atype': 'str', 'qkey': 1, 'ic': 
+                                                                        ^
+SyntaxError: '{' was never closed
+
+[2025-05-11 21:13:23] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 21:14:37] Error: '{' was never closed (<string>, line 1)
+[2025-05-11 21:14:37] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat.chat_sp(manager.ConnectedUser[0].name,{'answer': 'mild fever', 'atype': 'str', 'qkey': 1, 'ic': 
+                                                                        ^
+SyntaxError: '{' was never closed
+
+[2025-05-11 21:14:37] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 21:15:45] Error: '{' was never closed (<string>, line 1)
+[2025-05-11 21:15:45] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat.chat_sp(manager.ConnectedUser[0].name,{'answer': 'mild fever', 'atype': 'str', 'qkey': 1, 'ic': 
+                                                                        ^
+SyntaxError: '{' was never closed
+
+[2025-05-11 21:15:45] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 21:48:05] Error: invalid syntax (<string>, line 1)
+[2025-05-11 21:48:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat..__pd__.__nlp__.preprocess_sym("skin_rash")
+                                  ^
+SyntaxError: invalid syntax
+
+[2025-05-11 21:48:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 21:54:35] Error: name 'sym' is not defined
+[2025-05-11 21:54:35] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'sym' is not defined. Did you mean: 'sum'?
+
+[2025-05-11 21:54:35] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 21:55:14] Error: name 'self' is not defined
+[2025-05-11 21:55:14] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'self' is not defined
+
+[2025-05-11 21:55:14] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:25:00] Error: 'ChatClass' object has no attribute 'quesStack'
+[2025-05-11 22:25:00] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'ChatClass' object has no attribute 'quesStack'
+
+[2025-05-11 22:25:00] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:31:24] Error: 'list' object has no attribute 'split'
+[2025-05-11 22:31:24] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 135, in my_event
+    imgsym = user.symimg.Predict(data['answer'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ImageToSymptoms.py", line 173, in Predict
+    image_data = base64.b64decode(image.split(",")[-1])
+                                  ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'split'
+
+[2025-05-11 22:31:24] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:32:58] Error: 'ChatClass' object has no attribute 'msgStack'
+[2025-05-11 22:32:58] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'ChatClass' object has no attribute 'msgStack'
+
+[2025-05-11 22:32:58] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:53:01] Error: 'list' object has no attribute 'split'
+[2025-05-11 22:53:01] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 135, in my_event
+    imgsym = user.symimg.Predict(data['answer'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ImageToSymptoms.py", line 173, in Predict
+    image_data = base64.b64decode(image.split(",")[-1])
+                                  ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'split'
+
+[2025-05-11 22:53:01] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:53:03] Error: list index out of range
+[2025-05-11 22:53:03] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 128, in my_event
+    data.update({'qkey':user.quesStack[len(user.msgStack)-1]['qkey']})
+                        ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-11 22:53:03] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:53:07] Error: 'ChatClass' object has no attribute 'msgStack'
+[2025-05-11 22:53:07] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'ChatClass' object has no attribute 'msgStack'
+
+[2025-05-11 22:53:07] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 22:58:33] Error: Incorrect padding
+[2025-05-11 22:58:33] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 135, in my_event
+    imgsym = user.symimg.Predict(data['answer'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ImageToSymptoms.py", line 173, in Predict
+    image_data = base64.b64decode(image.split(",")[-1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+[2025-05-11 22:58:33] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 23:11:57] Error: Incorrect padding
+[2025-05-11 23:11:57] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 135, in my_event
+    imgsym = user.symimg.Predict(data['answer'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ImageToSymptoms.py", line 173, in Predict
+    image_data = base64.b64decode(image.split(",")[-1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+[2025-05-11 23:11:57] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 23:21:46] Error: Incorrect padding
+[2025-05-11 23:21:46] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 135, in my_event
+    imgsym = user.symimg.Predict(data['answer'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ImageToSymptoms.py", line 173, in Predict
+    image_data = base64.b64decode(image.split(",")[-1])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+[2025-05-11 23:21:46] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 23:40:08] Error: cannot unpack non-iterable NoneType object
+[2025-05-11 23:40:08] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 162, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-11 23:40:08] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 23:41:39] Error: cannot unpack non-iterable NoneType object
+[2025-05-11 23:41:39] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 162, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-11 23:41:39] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 23:50:49] Error: cannot unpack non-iterable NoneType object
+[2025-05-11 23:50:49] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 162, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-11 23:50:49] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-11 23:52:45] Error: list index out of range
+[2025-05-11 23:52:45] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 162, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 103, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-11 23:52:45] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:26:39] Error: invalid syntax (<string>, line 1)
+[2025-05-12 09:26:39] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat.
+SyntaxError: invalid syntax
+
+[2025-05-12 09:26:39] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:30:14] Error: invalid syntax (<string>, line 1)
+[2025-05-12 09:30:14] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    udit = 10
+         ^
+SyntaxError: invalid syntax
+
+[2025-05-12 09:30:14] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:31:08] Error: invalid syntax (<string>, line 1)
+[2025-05-12 09:31:08] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    udit=10
+        ^
+SyntaxError: invalid syntax
+
+[2025-05-12 09:31:08] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:31:20] Error: name 'udit' is not defined
+[2025-05-12 09:31:20] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'udit' is not defined
+
+[2025-05-12 09:31:20] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:34:34] Error: '{' was never closed (<string>, line 1)
+[2025-05-12 09:34:34] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat.first_initial_sym(manager.ConnectUser[0].chat.sym1, manager.ConnectedUser[0].sim1, {'answer': 'mild fever', 'atype': 'str', 'qkey': 2, 'ic': 
+                                                                                                                     ^
+SyntaxError: '{' was never closed
+
+[2025-05-12 09:34:34] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:35:02] Error: name 'answer' is not defined
+[2025-05-12 09:35:02] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+NameError: name 'answer' is not defined
+
+[2025-05-12 09:35:02] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:36:26] Error: '[' was never closed (<string>, line 1)
+[2025-05-12 09:36:26] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser[0].chat.first_initial_sym(manager.ConnectUser[0].chat.sym1, manager.ConnectedUser[0].sim1, manager.ConnectedUser[0].msgStack[len(manager.ConnectedUser[0].msgStack)
+                                                                                                                                                      ^
+SyntaxError: '[' was never closed
+
+[2025-05-12 09:36:26] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:51:44] Error: invalid literal for int() with base 10: 'yes'
+[2025-05-12 09:51:44] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 205, in chat_sp
     _, flag = self.calc_condition(self.all_sym, int(answer['answer']))
                                                 ^^^^^^^^^^^^^^^^^^^^^
 ValueError: invalid literal for int() with base 10: 'yes'
 
-[2025-05-13 18:33:15] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+[2025-05-12 09:51:44] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 09:52:01] Error: list index out of range
+[2025-05-12 09:52:01] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 128, in my_event
+    data.update({'qkey':user.quesStack[len(user.msgStack)-1]['qkey']})
+                        ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-12 09:52:01] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 10:08:56] Error: list index out of range
+[2025-05-12 10:08:56] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 167, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 108, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-12 10:08:56] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 10:10:12] Error: list index out of range
+[2025-05-12 10:10:12] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 167, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 108, in main_sp
+    k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
+                                                       ~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: list index out of range
+
+[2025-05-12 10:10:12] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 10:11:05] Error: invalid literal for int() with base 10: 'yes'
+[2025-05-12 10:11:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 139, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\ChatClass.py", line 205, in chat_sp
+    _, flag = self.calc_condition(self.all_sym, int(answer['answer']))
+                                                ^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'yes'
+
+[2025-05-12 10:11:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 19:46:56] Error: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'NoneType'>
+[2025-05-12 19:46:56] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 110, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 201, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 112, in main_sp
+    self.sim1, self.psym1 = self.__sem__.semantic_similarity(self.user_inputs[0], self.__pd__.__all_symp_pr__)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 44, in semantic_similarity
+    d = self.semanticD(symp_t, symp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 22, in semanticD
+    doc1_p = self.__nlp__.preprocess(doc1).split(' ')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\NlpClass.py", line 9, in preprocess
+    nlp_doc=self.__nlp__(doc)
+            ^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1040, in __call__
+    doc = self._ensure_doc(text)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1134, in _ensure_doc
+    raise ValueError(Errors.E1041.format(type=type(doc_like)))
+ValueError: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'NoneType'>
+
+[2025-05-12 19:46:56] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 19:50:05] Error: 'ChatClass' object has no attribute 'pysm1'
+[2025-05-12 19:50:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 87, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'ChatClass' object has no attribute 'pysm1'. Did you mean: 'psym1'?
+
+[2025-05-12 19:50:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 20:22:59] Error: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'NoneType'>
+[2025-05-12 20:22:59] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 110, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 201, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 112, in main_sp
+    self.sim1, self.psym1 = self.__sem__.semantic_similarity(self.user_inputs[0], self.__pd__.__all_symp_pr__)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 44, in semantic_similarity
+    d = self.semanticD(symp_t, symp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 22, in semanticD
+    doc1_p = self.__nlp__.preprocess(doc1).split(' ')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\NlpClass.py", line 9, in preprocess
+    nlp_doc=self.__nlp__(doc)
+            ^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1040, in __call__
+    doc = self._ensure_doc(text)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1134, in _ensure_doc
+    raise ValueError(Errors.E1041.format(type=type(doc_like)))
+ValueError: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'NoneType'>
+
+[2025-05-12 20:22:59] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-12 20:25:07] Error: unterminated string literal (detected at line 1) (<string>, line 1)
+[2025-05-12 20:25:07] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 87, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser["felg0I0Wn7bFhvg
+                          ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+[2025-05-12 20:25:07] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-13 13:54:57] Error: unterminated string literal (detected at line 1) (<string>, line 1)
+[2025-05-13 13:54:57] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 91, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser["l765Y
+                          ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+[2025-05-13 13:54:57] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
