@@ -6,18 +6,18 @@ from .ImageToSymptoms import ImageToSymptoms
 from ..Constants.path import USERDATAFILE
 
 class UserConnected:
-    def __init__(self, sid: str, environ: dict):
+    def __init__(self, sid: str):
         self.msgStack = []
         self.quesStack = []
         self.sid = sid
         self.name = ""
         self.email = ""
-        self.environ = environ
         self.chat = ChatClass()
         self.symimg = ImageToSymptoms()
 
     def displaySelf(self):
-        print(f"{self.sid} : {self.msgStack}")
+        # print(f"{self.sid} : {self.msgStack}")
+        print(f"in dictionary: {self.to_dict()}")
     
     def resetMsgQuestStack(self):
         self.msgStack = []
@@ -35,18 +35,19 @@ class UserConnected:
         }
 
     @classmethod
-    def from_dict(cls, data, environ):
-        obj = cls(data['sid'], environ)
+    def from_dict(cls, data):
+        obj = cls(data['sid'])
         obj.msgStack = data['msgStack']
         obj.quesStack = data['quesStack']
         obj.name = data['name']
+        obj.email = data['email']
         obj.chat = ChatClass.dict_from(data['chat'])
         return obj
 
 class ConnectionManager:
     def __init__(self):
         self.ConnectedUser = {}
-        self.udl = UserDataLoader()
+        self.udl = UserDataLoader() 
         self.loadedDataStatus = False
 
     def connectUser(self, sid, user: UserConnected):
@@ -98,12 +99,12 @@ class ConnectionManager:
         sys.exit(0)
         
 class UserDataLoader:
-    def LoadUsers(self, env):
+    def LoadUsers(self):
         try:
             with open(USERDATAFILE, 'rb') as myfile:
                 data = pickle.load(myfile)
 
-            dic = {sid: UserConnected.from_dict(data, env) for sid, data in data.items()}
+            dic = {sid: UserConnected.from_dict(data) for sid, data in data.items()}
             # print()
             for i, j in dic.items():
                 print(f"{i}: {j} and {j.email}")

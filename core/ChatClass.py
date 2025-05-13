@@ -142,7 +142,8 @@ class ChatClass:
                 ql.extend(k)
                 print(f"this is the ql: {ql}")
                 ql = list(set(ql))
-                ql = [i for i in ql if i.replace("_"," ") not in self.user_inputs]
+                self.__pd__.getSymDesc()
+                ql = [[i, self.__pd__.__symDesc__[i]]for i in ql if i.replace("_"," ") not in self.user_inputs] # find it
                 print(f"this is the ql: {ql}")
                 dic["q"] = "Are you experiencing any of the following?"
                 dic["ql"] = ql

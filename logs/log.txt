@@ -1,0 +1,26 @@
+[2025-05-13 18:27:05] Error: cannot unpack non-iterable NoneType object
+[2025-05-13 18:27:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 200, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-13 18:27:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-13 18:33:15] Error: invalid literal for int() with base 10: 'yes'
+[2025-05-13 18:33:15] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 114, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 228, in chat_sp
+    _, flag = self.calc_condition(self.all_sym, int(answer['answer']))
+                                                ^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'yes'
+
+[2025-05-13 18:33:15] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------

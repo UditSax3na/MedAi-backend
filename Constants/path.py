@@ -13,6 +13,7 @@ SEVERITY_DATASET = DATASET_PATH / 'Symptom_severity.csv'
 DESCRIPTION_DATASET = DATASET_PATH / 'symptom_Description.csv'
 PRECAUTION_DATASET = DATASET_PATH / 'symptom_precaution.csv'
 CLEANSYM_DATASET = DATASET_PATH / 'cleanDataset.pkl'
+SYMDESCRIPTION = DATASET_PATH / 'symDescription.csv'
 
 # paths for model and encoder
 STORAGE_PATH = PARENT_DIR / 'Storage'

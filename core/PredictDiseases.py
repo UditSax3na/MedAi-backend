@@ -35,6 +35,7 @@ class PredictDiseases:
         self.__severityDictionary__ = {}
         self.__description_list__ = {}
         self.__precautionDictionary__ = {}
+        self.__symDesc__ = {}
         self.__symp__=[]
         self.__disease__=[]
         for i in range(len(self.__df__)):
@@ -79,15 +80,24 @@ class PredictDiseases:
         encoded_input_df = pd.DataFrame(encoded_input, columns=all_symptoms)
         predicted_label = self.__model__.predict(encoded_input_df)[0]
         return label_encoder.inverse_transform([predicted_label])[0]
+    
+    def getSymDesc(self):
+        """
+        load the symptoms descrption from the dataset to a dictionary variable
+        """
+        with open(SYMDESCRIPTION) as file:
+            reader = csv.reader(file, delimiter=',')
+            for row in reader:
+                desc={row[0]:row[1]}
+                self.__symDesc__.update(desc)
 
     def getDescription(self):
         """
         used to read the description from the description datasets
         """
         with open(DESCRIPTION_DATASET) as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            line_count = 0
-            for row in csv_reader:
+            reader = csv.reader(csv_file, delimiter=',')
+            for row in reader:
                 _description={row[0]:row[1]}
                 self.__description_list__.update(_description)
 
@@ -96,10 +106,9 @@ class PredictDiseases:
         used to read the severity from the serverity datasets
         """
         with open(SEVERITY_DATASET) as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            line_count = 0
+            reader = csv.reader(csv_file, delimiter=',')
             try:
-                for row in csv_reader:
+                for row in reader:
                     _diction={row[0]:int(row[1])}
                     self.__severityDictionary__.update(_diction)
             except:
@@ -110,9 +119,8 @@ class PredictDiseases:
         used to read the precaution from the precaution datasets
         """
         with open(PRECAUTION_DATASET) as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            line_count = 0
-            for row in csv_reader:
+            reader = csv.reader(csv_file, delimiter=',')
+            for row in reader:
                 _prec={row[0]:[row[1],row[2],row[3],row[4]]}
                 self.__precautionDictionary__.update(_prec)
 

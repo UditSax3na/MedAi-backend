@@ -64,15 +64,15 @@ signal.signal(signal.SIGTERM, manager.SignalHandler)
 atexit.register(manager.ExistCleanup)
 
 @sio.event
-async def connect(sid, environ):
+async def connect(sid, env):
     if USERDATAFILE.exists() and manager.loadedDataStatus==False:
-        manager.ConnectedUser = manager.udl.LoadUsers(environ)
+        manager.ConnectedUser = manager.udl.LoadUsers()
         manager.loadedDataStatus = True
         
     if manager.healthCheckUp():
         await sio.disconnect(sid)
     else:
-        user = UserConnected(sid, environ)
+        user = UserConnected(sid)
         manager.connectUser(sid, user)
         print("Client connected:", sid)
 
@@ -99,7 +99,7 @@ async def my_event(sid, data: dict)->None:
             await sio.emit("response", dic, to=sid)
 
         else:
-            user,_ = manager.searchUsers(sid)
+            user, _ = manager.searchUsers(sid)
             if len(user.quesStack)!=0:
                 data.update({'qkey':user.quesStack[len(user.quesStack)-1]['qkey']})
             else:
@@ -133,8 +133,9 @@ async def my_event(sid, data: dict)->None:
 @sio.event
 async def set_name(sid, data) -> None:
     print(f"this is data: {data}")
-    print(manager.searchUsers(data['email'],mode='email'))
     user, flag = manager.searchUsers(data['email'], mode='email')
+    # print(f"ConnectedUsers: {}")
+    manager.displayUsersInfo()
     print(f"user: {user} and flag: {flag}")
     if flag: # used to set the data before crash
         tempsid = user.sid
@@ -162,6 +163,7 @@ async def set_name(sid, data) -> None:
         user.name=data['name']
         user.email=data['email']
         dic = {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"ql": [], "p": None, "r": None}
+        print(f"dic : {dic}")
         await sio.emit("response", dic, to=sid)
         user.quesStack.append(dic)
 
@@ -177,12 +179,11 @@ if __name__ == "__main__":
             myfile.write(f"[{timestamp}] Traceback:\n{error_trace}\n")
             myfile.write(f"[{timestamp}] File Location: {__file__}\n")
             myfile.write("-" * 60 + "\n")
-    finally:
-        manager.ExistCleanup()
-
-
+    # finally:
+    #     manager.ExistCleanup()
 
 # Important Commands 
+
 # python -m venv venv -> create virtual env
 # venv\Scripts\activate -> activate virtual env
 # cd .. -> change to parent directory
