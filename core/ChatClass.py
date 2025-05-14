@@ -85,14 +85,14 @@ class ChatClass:
         
         elif answer['qkey'] in [1, 2]:
             a, self.sim1, self.psym1 = self.first_initial_sym(self.sym1, self.sim1, answer)
-            self.sym1 = self.psym1
+            self.sym1 = a
             if isinstance(a, dict) and self.sim1 == None:
                 print("we are here 1!")
                 print(f"a:{a}, self.sim1:{self.sim1}, self.psym1:{self.psym1}")
                 return a, 0
             else:
                 print("we are here 1!")
-                self.user_inputs.append(self.psym1)
+                self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
                 dic["q"] = "Enter a second symptom you are experiencing Mr/Ms " + name
                 dic["qkey"] = 3
                 print(f"a:{a}, self.sim1:{self.sim1}, self.psym1:{self.psym1}")
@@ -106,7 +106,7 @@ class ChatClass:
                 return a, 0
             else:
                 print("we are here 2!")
-                self.user_inputs.append(self.psym2)
+                self.user_inputs.append(self.__pd__.__col_dict__[self.psym2])
                 if self.sim1 == 0 or self.sim2 == 0:
                     self.sim1, self.psym1 = self.__sem__.semantic_similarity(self.user_inputs[0], self.__pd__.__all_symp_pr__)
                     self.sim2, self.psym2 = self.__sem__.semantic_similarity(self.user_inputs[1], self.__pd__.__all_symp_pr__)
@@ -143,7 +143,7 @@ class ChatClass:
                 print(f"this is the ql: {ql}")
                 ql = list(set(ql))
                 self.__pd__.getSymDesc()
-                ql = [[i, self.__pd__.__symDesc__[i]] for i in ql if i.replace("_"," ") not in self.user_inputs] 
+                ql = [[i, self.__pd__.__symDesc__[i]] for i in ql if i not in self.user_inputs] 
                 print(f"this is the ql: {ql} and this is user_inputs: {self.user_inputs}")
                 dic["q"] = "Are you experiencing any of the following?"
                 dic["ql"] = ql

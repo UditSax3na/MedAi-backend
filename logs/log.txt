@@ -1355,3 +1355,58 @@ SyntaxError: unterminated string literal (detected at line 1)
 
 [2025-05-13 13:54:57] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
+[2025-05-14 13:08:16] Error: unterminated string literal (detected at line 1) (<string>, line 1)
+[2025-05-14 13:08:16] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 94, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser["R
+                          ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+[2025-05-14 13:08:16] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 13:11:07] Error: unterminated string literal (detected at line 1) (<string>, line 1)
+[2025-05-14 13:11:07] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 94, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1
+    manager.ConnectedUser["R
+                          ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+[2025-05-14 13:11:07] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 13:19:55] Error: unhashable type: 'list'
+[2025-05-14 13:19:55] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 201, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 159, in main_sp
+    self.user_inputs = list(set(self.user_inputs))
+                            ^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+
+[2025-05-14 13:19:55] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 13:23:09] Error: invalid literal for int() with base 10: 'yes'
+[2025-05-14 13:23:09] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 231, in chat_sp
+    res = self.calc_condition(self.all_sym, int(answer['answer']))
+                                            ^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'yes'
+
+[2025-05-14 13:23:09] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------

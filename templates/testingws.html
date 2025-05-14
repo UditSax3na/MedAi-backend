@@ -74,7 +74,8 @@
 
         if (qk == 5) {
             if (msg.value === "yes" || msg.value === "no") {
-                if (msg.value === "yes") answerStack.push(ql[i]);
+                console.log("this : ",ql[i][0])
+                if (msg.value === "yes") answerStack.push(ql[i][0]);
                 // else i = ql.length - 1;
 
                 i++;
@@ -137,14 +138,16 @@
                 msg.setAttribute('data-question-key', data['qkey']);
                 ql = data['ql'];
                 updatedChat("MedAi", ql[i]);
-                i++;
             } else {
                 updatedChat("MedAi", str);
             }
-        } else if (data['qkey'] == 12) {
+        } else if (data['qkey'] == 11){
+            updatedChat("MedAi", data['p']);
             updatedChat("MedAi", data['r']['desc']);
             updatedChat("MedAi", data['r']['prev']);
-            updatedChat("MedAi", data['r']['last']);
+            updatedChat("MedAi", data['q']);
+        }else if (data['qkey'] == 12) {
+            updatedChat("MedAi", data['r']);
             updatedChat("MedAi", data['q']);
         } else if (data['qkey'] == 13) {
             updatedChat("MedAi", data['r']);
