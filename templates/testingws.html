@@ -3,6 +3,15 @@
 <head>
   <title>Testing and Debugging</title>
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <style>
+  #chatbox {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+</style>
+
 </head>
 <body>
     <input id="name" placeholder="Type a name" value="udit"/>
@@ -46,6 +55,7 @@
         } else {
             chatbox.innerHTML += `<br><span><strong>${from}:</strong> ${data}</span>`;
         }
+        chatbox.scrollTop = chatbox.scrollHeight
     }
 
     async function connectToSocket() {

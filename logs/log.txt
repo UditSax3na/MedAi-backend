@@ -1410,3 +1410,165 @@ ValueError: invalid literal for int() with base 10: 'yes'
 
 [2025-05-14 13:23:09] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
+[2025-05-14 19:37:19] Error: 'answer'
+[2025-05-14 19:37:19] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 245, in chat_sp
+    return self.chat_sp(name, answer={"qkey":0})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 202, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 85, in main_sp
+    if answer['answer'].lower() == 'yes':
+       ~~~~~~^^^^^^^^^^
+KeyError: 'answer'
+
+[2025-05-14 19:37:19] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 19:49:07] Error: maximum recursion depth exceeded
+[2025-05-14 19:49:07] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 115, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 245, in chat_sp
+    return self.chat_sp(name, answer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 245, in chat_sp
+    return self.chat_sp(name, answer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 245, in chat_sp
+    return self.chat_sp(name, answer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 981 more times]
+RecursionError: maximum recursion depth exceeded
+
+[2025-05-14 19:49:07] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 19:59:40] Error: cannot access local variable 'ql' where it is not associated with a value
+[2025-05-14 19:59:40] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 202, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 176, in main_sp
+    ql.extend(k)
+    ^^
+UnboundLocalError: cannot access local variable 'ql' where it is not associated with a value
+
+[2025-05-14 19:59:40] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 19:59:43] Error: cannot access local variable 'ql' where it is not associated with a value
+[2025-05-14 19:59:43] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 202, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 176, in main_sp
+    ql.extend(k)
+    ^^
+UnboundLocalError: cannot access local variable 'ql' where it is not associated with a value
+
+[2025-05-14 19:59:43] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 19:59:59] Error: cannot access local variable 'ql' where it is not associated with a value
+[2025-05-14 19:59:59] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 202, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 176, in main_sp
+    ql.extend(k)
+    ^^
+UnboundLocalError: cannot access local variable 'ql' where it is not associated with a value
+
+[2025-05-14 19:59:59] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 20:11:16] Error: cannot access local variable 'ql' where it is not associated with a value
+[2025-05-14 20:11:16] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 204, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 144, in main_sp
+    ql.extend(k)
+    ^^
+UnboundLocalError: cannot access local variable 'ql' where it is not associated with a value
+
+[2025-05-14 20:11:16] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 20:14:52] Error: 'NoneType' object is not subscriptable
+[2025-05-14 20:14:52] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 248, in chat_sp
+    return self.chat_sp(name, answer.update({'qkey':0}))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 204, in chat_sp
+    if answer['qkey'] < 10:
+       ~~~~~~^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+[2025-05-14 20:14:52] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 20:32:44] Error: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'list'>
+[2025-05-14 20:32:44] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 205, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 90, in main_sp
+    a, self.sim1, self.psym1 = self.first_initial_sym(self.sym1, self.sim1, answer)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 261, in first_initial_sym
+    sym = self.__pd__.__nlp__.preprocess_sym(answer['answer'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\NlpClass.py", line 17, in preprocess_sym
+    nlp_doc=self.__nlp__(doc)
+            ^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1040, in __call__
+    doc = self._ensure_doc(text)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\venv\Lib\site-packages\spacy\language.py", line 1134, in _ensure_doc
+    raise ValueError(Errors.E1041.format(type=type(doc_like)))
+ValueError: [E1041] Expected a string, Doc, or bytes as input, but got: <class 'list'>
+
+[2025-05-14 20:32:44] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 20:32:47] Error: 'yes'
+[2025-05-14 20:32:47] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 205, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 98, in main_sp
+    self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'yes'
+
+[2025-05-14 20:32:47] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------

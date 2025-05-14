@@ -16,6 +16,7 @@ class ChatClass:
         self.diseases =  self.__pd__.__disease__
         self.all_sym = []
         self.result = None
+        self.ql = []
 
     @classmethod
     def dict_from(cls, data):
@@ -27,6 +28,7 @@ class ChatClass:
         obj.psym2 = data["psym2"]
         obj.user_inputs = data["user_inputs"]
         obj.result = data["result"]
+        obj.ql = data['ql']
         return obj
 
     def to_dict(self):
@@ -37,7 +39,8 @@ class ChatClass:
             "psym1": self.psym1,
             "psym2": self.psym2,
             "result": self.result,
-            "user_inputs": self.user_inputs
+            "user_inputs": self.user_inputs,
+            'ql': self.ql
         }
 
     def calc_condition(self, exp, days):
@@ -85,13 +88,13 @@ class ChatClass:
         
         elif answer['qkey'] in [1, 2]:
             a, self.sim1, self.psym1 = self.first_initial_sym(self.sym1, self.sim1, answer)
-            self.sym1 = a
             if isinstance(a, dict) and self.sim1 == None:
-                print("we are here 1!")
+                print("we are herein 1 1!")
                 print(f"a:{a}, self.sim1:{self.sim1}, self.psym1:{self.psym1}")
                 return a, 0
             else:
-                print("we are here 1!")
+                print("we are here 1 in 1!")
+                self.sym1 = a
                 self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
                 dic["q"] = "Enter a second symptom you are experiencing Mr/Ms " + name
                 dic["qkey"] = 3
@@ -100,12 +103,12 @@ class ChatClass:
             
         elif answer['qkey'] in [3, 4]:
             a, self.sim2, self.psym2 = self.first_initial_sym(self.sym1, self.sim2, answer)
-            self.sym1 = self.psym2
             if isinstance(a, dict) and self.sim2 == None:
-                print("we are here 1!")
+                print("we are here in 2 1!")
                 return a, 0
             else:
-                print("we are here 2!")
+                print("we are here in 2 2!")
+                self.sym1 = a
                 self.user_inputs.append(self.__pd__.__col_dict__[self.psym2])
                 if self.sim1 == 0 or self.sim2 == 0:
                     self.sim1, self.psym1 = self.__sem__.semantic_similarity(self.user_inputs[0], self.__pd__.__all_symp_pr__)
@@ -137,13 +140,14 @@ class ChatClass:
                     })
                 print(f"self.diseases : {self.diseases}")
                 dic['ic']=answer['ic']+1
-                ql = []
                 k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
+                ql = []
                 ql.extend(k)
                 print(f"this is the ql: {ql}")
                 ql = list(set(ql))
                 self.__pd__.getSymDesc()
                 ql = [[i, self.__pd__.__symDesc__[i]] for i in ql if i not in self.user_inputs] 
+                self.ql = ql
                 print(f"this is the ql: {ql} and this is user_inputs: {self.user_inputs}")
                 dic["q"] = "Are you experiencing any of the following?"
                 dic["ql"] = ql
@@ -170,14 +174,13 @@ class ChatClass:
                 print("flag: 2")
                 print(f"self.diseases : {self.diseases}")
                 ql = []
-                for dis in self.diseases:
-                    k = self.__sem__.symVONdisease(self.__pd__.__df__, dis)
-                    ql.extend(k)
+                k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[answer['ic']])
+                ql.extend(k)
                 
                 newql = []
                 for i in ql:
-                    if i not in answer['answer']:
-                        newql.append(i)
+                    if i not in answer['answer'] and i not in self.ql and i not in self.user_inputs:
+                        newql.append([i, self.__pd__.__symDesc__[i]])
 
                 print(f"this is the ql: {ql}")
                 ql = list(set(ql))
@@ -236,20 +239,13 @@ class ChatClass:
             
             elif answer['qkey'] == 12:
                 if answer['answer'].lower() != "yes":
-                    # dic['qkey'] = 0
                     dic['r'] = "Thank you for using our application!"
-                    dic['qkey']=200
+                    dic['qkey'] = 200
                     return dic
                 
                 else:
-                    return {
-                        "q": "Enter the main symptom you are experiencing Mr/Ms " + name,
-                        "qkey": 0,
-                        "ic": -1,
-                        "ql": [],
-                        "p": None,
-                        "r": None
-                    }
+                    answer.update({'qkey':0})
+                    return self.chat_sp(name, answer)
                 
             else:
                 dic['q'] = "Error: Invalid qkey"
@@ -259,6 +255,7 @@ class ChatClass:
             return result
 
     def first_initial_sym(self, dfsym, sim, answer):
+        print(f"dfsym: {dfsym}, sim:{sim}, answer:{answer}")
         if answer["qkey"] in [1, 3]:
             sym = self.__pd__.__nlp__.preprocess_sym(answer['answer'])
             sim, psym = self.__syn__.syntactic_similarity(sym, self.__pd__.__all_symp_pr__)
@@ -269,3 +266,4 @@ class ChatClass:
                 return a, None, None
             return sym, sim, answer['answer']
         return dfsym, sim, answer['answer']
+

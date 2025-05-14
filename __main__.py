@@ -16,8 +16,8 @@ import uvicorn
 import socketio
 import traceback
 import datetime
-import atexit
-import signal
+# import atexit
+# import signal
 
 
 # making all the folders and files it they are missing
@@ -31,14 +31,15 @@ sio = socketio.AsyncServer(
 
 manager = ConnectionManager()
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print("App is starting...")
-    yield
-    print("App is shutting down...")  # <-- Put your cleanup here
-    manager.ExistCleanup()
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     print("App is starting...")
+#     yield
+#     print("App is shutting down...")
+#     manager.ExistCleanup()
 
-fastapiapp = FastAPI(lifespan=lifespan)
+# fastapiapp = FastAPI(lifespan=lifespan)
+fastapiapp = FastAPI()
 fastapiapp.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # or ["http://localhost:3000"]
@@ -59,16 +60,16 @@ async def index(request: Request):
 app = socketio.ASGIApp(sio, other_asgi_app=fastapiapp)
 
 # adding cleanup function if server crashes or is terminated
-signal.signal(signal.SIGINT, manager.SignalHandler)
-signal.signal(signal.SIGTERM, manager.SignalHandler)
-atexit.register(manager.ExistCleanup)
+# signal.signal(signal.SIGINT, manager.SignalHandler)
+# signal.signal(signal.SIGTERM, manager.SignalHandler)
+# atexit.register(manager.ExistCleanup)
 
 # for loading the data which existed before server stopped (backup data)
-if USERDATAFILE.exists() and manager.loadedDataStatus==False:
-    manager.ConnectedUser = manager.udl.LoadUsers()
-    manager.loadedDataStatus = True
-    for i, j in manager.ConnectedUser.items():
-        print(f"manager.ConnectedUser[{i}]: {j.email} and {j.chat.user_inputs} ")
+# if USERDATAFILE.exists() and manager.loadedDataStatus==False:
+#     manager.ConnectedUser = manager.udl.LoadUsers()
+#     manager.loadedDataStatus = True
+#     for i, j in manager.ConnectedUser.items():
+#         print(f"manager.ConnectedUser[{i}]: {j.email} and {j.chat.user_inputs} ")
 
 @sio.event
 async def connect(sid, env):
