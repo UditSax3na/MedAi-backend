@@ -35,7 +35,7 @@ manager = ConnectionManager()
 # async def lifespan(app: FastAPI):
 #     print("App is starting...")
 #     yield
-#     print("App is shutting down...")
+#     print("App is shutting down...") 
 #     manager.ExistCleanup()
 
 # fastapiapp = FastAPI(lifespan=lifespan)

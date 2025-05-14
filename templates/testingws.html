@@ -57,7 +57,9 @@
         }
         chatbox.scrollTop = chatbox.scrollHeight
     }
-
+    function isOnlyDigits(str){
+        return /^\d+$/.test(str);
+    }
     async function connectToSocket() {
         const name = document.getElementById("name").value;
         const msg = document.getElementById('msg');
@@ -93,6 +95,7 @@
                     msg.setAttribute('data-question-key', 0);
                     i = 0;
                     travel.answer = answerStack;
+                    travel.atype = 'list'
                     await socket.emit("my_event", travel);
                 } else {
                     updatedChat("MedAi", ql[i], 1);
@@ -101,6 +104,9 @@
                 updatedChat("MedAi", "Answer in yes or no !");
             }
         } else {
+            if (isOnlyDigits(msg.value)){
+                travel.atype = 'int'
+            }
             travel.answer = msg.value;
             await socket.emit("my_event", travel);
         }

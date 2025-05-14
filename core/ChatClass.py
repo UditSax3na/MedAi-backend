@@ -1,6 +1,8 @@
 from .PredictDiseases import PredictDiseases
 from .SemanticClass import SemanticClass
 from .SyntanticClass import SyntanticClass
+from difflib import get_close_matches
+
 
 class ChatClass:
     def __init__(self):
@@ -17,6 +19,8 @@ class ChatClass:
         self.all_sym = []
         self.result = None
         self.ql = []
+        self.flag = None
+        self.flagsym = ""
 
     @classmethod
     def dict_from(cls, data):
@@ -72,8 +76,9 @@ class ChatClass:
 
     def main_sp(self, name, all_symp_col, answer: dict):
         print(f"This is answer : {answer}")
+        
         dic = {
-            "q": "Enter the main symptom you are experiencing Mr/Ms " + name,
+            "q": "Enter the main symptom you are experiencing " + name,
             "qkey": 1,
             "ic": -1,
             "ql": [],
@@ -81,12 +86,18 @@ class ChatClass:
             "r": None
         }
 
+
         if answer['qkey'] == 0 :
+            self.user_inputs = []
+            self.all_sym = []
             if answer['answer'].lower() == 'yes':
                 return dic, 0
             return dic, 0
         
         elif answer['qkey'] in [1, 2]:
+            if answer['qkey'] == 1:
+                self.user_inputs = []
+                self.all_sym = []
             a, self.sim1, self.psym1 = self.first_initial_sym(self.sym1, self.sim1, answer)
             if isinstance(a, dict) and self.sim1 == None:
                 print("we are herein 1 1!")
@@ -96,7 +107,7 @@ class ChatClass:
                 print("we are here 1 in 1!")
                 self.sym1 = a
                 self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
-                dic["q"] = "Enter a second symptom you are experiencing Mr/Ms " + name
+                dic["q"] = "Enter a second symptom you are experiencing " + name
                 dic["qkey"] = 3
                 print(f"a:{a}, self.sim1:{self.sim1}, self.psym1:{self.psym1}")
                 return dic, 0
@@ -122,7 +133,7 @@ class ChatClass:
                         "p": None,
                         "r": None
                     })
-                    return dic, None
+                    return dic, 0
                 if self.sim1 == 0:
                     self.psym1 = self.psym2
                 if self.sim2 == 0:
@@ -130,7 +141,7 @@ class ChatClass:
                 self.all_sym = [self.__pd__.__col_dict__[self.psym1], self.__pd__.__col_dict__[self.psym2]]
                 self.diseases = self.__sem__.possible_diseases(disease = self.diseases, l = self.all_sym)
                 if len(self.diseases)==0:
-                    return dic.update({
+                    dic.update({
                         "q":"I can't find anything with these symptoms can you change symptoms (yes):", 
                         "qkey": 0,
                         "ic":-1,
@@ -138,6 +149,7 @@ class ChatClass:
                         "p": None,
                         "r": None
                     })
+                    return dic, 0
                 print(f"self.diseases : {self.diseases}")
                 dic['ic']=answer['ic']+1
                 k = self.__sem__.symVONdisease(self.__pd__.__df__, self.diseases[dic['ic']])
@@ -191,15 +203,58 @@ class ChatClass:
                 dic["qkey"] = 5
                 return dic, 0
 
+    def validDate(self, sym, all_symp):
+        matches = [word for word in all_symp if sorted(word) == sorted(sym)]
+        if matches:
+            return matches[0], True
+        else:
+            close_match = get_close_matches(sym, all_symp, n=1, cutoff=0.6)
+            if close_match:
+                return close_match[0], True
+            else:
+                return False, False
+
     def chat_sp(self, name, answer: dict):
         dic = {
-            "q": "Enter the main symptom you are experiencing Mr/Ms " + name,
+            "q": "Enter the main symptom you are experiencing " + name,
             "qkey": 1,
             "ic": -1,
             "ql": [],
             "p": None,
             "r": None
         }
+
+        input_symptom = answer['answer']
+        is_raw_valid = input_symptom in self.__pd__.__all_symp__
+        matched_symptom, is_match_valid = self.validDate(input_symptom, self.__pd__.__all_symp__) if not is_raw_valid else (input_symptom, True)
+        print(answer['answer'])
+        if answer['atype'] == 'str' and answer['answer'].lower()!="yes" and answer['answer'].lower()!="no":
+            print(f"this is inside the if : {answer['answer']}")
+            if matched_symptom and is_match_valid: # sarh nkis
+                if not is_raw_valid:
+                    q = f"Did you mean : '{matched_symptom}' instead of '{input_symptom}' (please enter symptom again)"
+                    self.flag = 100+answer['qkey']
+                    self.flagsym = matched_symptom
+                    return {
+                        "q": q,
+                        "qkey": answer['qkey'],
+                        "ic": -1,
+                        "ql": [],
+                        "p": None,
+                        "r": None
+                    }
+            else:
+                q = "This symptom isn’t recognized. You can enter another symptom or retry."
+                self.flag = 100+answer['qkey']
+                return {
+                    "q": q,
+                    "qkey": answer['qkey'],
+                    "ic": -1,
+                    "ql": [],
+                    "p": None,
+                    "r": None
+                }
+        
         if answer['qkey'] < 10:
             result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
             print(f"this is result, sym : {result}, {sym}")
@@ -267,3 +322,5 @@ class ChatClass:
             return sym, sim, answer['answer']
         return dfsym, sim, answer['answer']
 
+
+# /arg-manager.ConnectedUser["Ox8Pb6wmRvj0C6KQAAAD"].chat.__pd__.__all_symp_pr__

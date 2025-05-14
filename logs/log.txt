@@ -1572,3 +1572,198 @@ KeyError: 'yes'
 
 [2025-05-14 20:32:47] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
+[2025-05-14 23:08:32] Error: too many values to unpack (expected 2)
+[2025-05-14 23:08:32] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 227, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+[2025-05-14 23:08:32] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-14 23:54:37] Error: cannot unpack non-iterable NoneType object
+[2025-05-14 23:54:37] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 238, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-14 23:54:37] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 00:19:06] Error: 'sarh nkis'
+[2025-05-15 00:19:06] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 237, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 115, in main_sp
+    self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'sarh nkis'
+
+[2025-05-15 00:19:06] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 00:31:31] Error: 'sarh nkis'
+[2025-05-15 00:31:31] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 233, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 117, in main_sp
+    self.user_inputs.append(self.__pd__.__col_dict__[self.psym2])
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'sarh nkis'
+
+[2025-05-15 00:31:31] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 00:37:58] Error: 'sarh nkis'
+[2025-05-15 00:37:58] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 233, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 103, in main_sp
+    self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'sarh nkis'
+
+[2025-05-15 00:37:58] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 00:56:10] Error: 'dict' object has no attribute 'lower'
+[2025-05-15 00:56:10] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 221, in chat_sp
+    if answer['qkey'] == self.flag and answer.lower()=="yes":
+                                       ^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'lower'
+
+[2025-05-15 00:56:10] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:14:19] Error: 'skin_rash' is not in list
+[2025-05-15 01:14:19] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 252, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 176, in main_sp
+    pred = self.__pd__.__model__.predict(self.__sem__.OHE(self.all_sym, all_symp_col))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 68, in OHE
+    l[0, all_sym.index(sym)] = 1  # Mark symptom presence as 1
+         ^^^^^^^^^^^^^^^^^^
+ValueError: 'skin_rash' is not in list
+
+[2025-05-15 01:14:19] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:17:05] Error: 'skin_rash' is not in list
+[2025-05-15 01:17:05] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 252, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 176, in main_sp
+    pred = self.__pd__.__model__.predict(self.__sem__.OHE(self.all_sym, all_symp_col))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 68, in OHE
+    l[0, all_sym.index(sym)] = 1  # Mark symptom presence as 1
+         ^^^^^^^^^^^^^^^^^^
+ValueError: 'skin_rash' is not in list
+
+[2025-05-15 01:17:05] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:19:13] Error: 'skin_rash' is not in list
+[2025-05-15 01:19:13] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 252, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 176, in main_sp
+    pred = self.__pd__.__model__.predict(self.__sem__.OHE(self.all_sym, all_symp_col))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\SemanticClass.py", line 68, in OHE
+    l[0, all_sym.index(sym)] = 1  # Mark symptom presence as 1
+         ^^^^^^^^^^^^^^^^^^
+ValueError: 'skin_rash' is not in list
+
+[2025-05-15 01:19:13] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:20:53] Error: 'PredictDiseases' object has no attribute 'all_sym'
+[2025-05-15 01:20:53] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 95, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'PredictDiseases' object has no attribute 'all_sym'
+
+[2025-05-15 01:20:53] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:39:46] Error: 'yes'
+[2025-05-15 01:39:46] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 253, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 104, in main_sp
+    self.user_inputs.append(self.__pd__.__col_dict__[self.psym1])
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'yes'
+
+[2025-05-15 01:39:46] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:46:18] Error: cannot unpack non-iterable NoneType object
+[2025-05-15 01:46:18] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 258, in chat_sp
+    result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
+    ^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+
+[2025-05-15 01:46:18] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 01:46:35] Error: 'Ox8Pb6wmRvj0C6KQAAAD'
+[2025-05-15 01:46:35] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 95, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+KeyError: 'Ox8Pb6wmRvj0C6KQAAAD'
+
+[2025-05-15 01:46:35] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
