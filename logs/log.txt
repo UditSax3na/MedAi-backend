@@ -1767,3 +1767,29 @@ KeyError: 'Ox8Pb6wmRvj0C6KQAAAD'
 
 [2025-05-15 01:46:35] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
+[2025-05-15 07:59:45] Error: 'list' object has no attribute 'lower'
+[2025-05-15 07:59:45] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 231, in chat_sp
+    if answer['atype'] == 'str' and answer['answer'].lower()!="yes" and answer['answer'].lower()!="no":
+                                    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'lower'
+
+[2025-05-15 07:59:45] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-15 08:11:17] Error: int() argument must be a string, a bytes-like object or a real number, not 'list'
+[2025-05-15 08:11:17] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 116, in my_event
+    questdic = user.chat.chat_sp(user.name, data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Projects\MedAi\MedAIBackend\core\ChatClass.py", line 289, in chat_sp
+    res = self.calc_condition(self.all_sym, int(answer['answer']))
+                                            ^^^^^^^^^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'list'
+
+[2025-05-15 08:11:17] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------

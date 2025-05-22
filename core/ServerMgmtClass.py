@@ -15,8 +15,10 @@ class UserConnected:
         self.chat = ChatClass()
         self.symimg = ImageToSymptoms()
 
+    def __str__(self):
+        return f"{self.sid}: {self.name}"
+
     def displaySelf(self):
-        # print(f"{self.sid} : {self.msgStack}")
         print(f"in dictionary: {self.to_dict()}")
     
     def resetMsgQuestStack(self):
@@ -49,15 +51,32 @@ class ConnectionManager:
         self.ConnectedUser = {}
         self.udl = UserDataLoader() 
         self.loadedDataStatus = False
+        self.iter = ""
 
-    def connectUser(self, sid, user: UserConnected):
+    def __iter__(self):
+        self.iter = iter(self.ConnectedUser.values())
+        return self.iter
+
+    def __next__(self):
+        return self.iter
+
+    def __contains__(self, sid):
+        return sid in self.ConnectedUser
+
+    def __setitem__(self, sid, user: UserConnected):
         self.ConnectedUser[sid] = user
 
-    def disconnectUser(self, sid):
-        del self.ConnectedUser[sid] # deleting the user from dictionary
+    def __getitem__(self, sid):
+        return self.ConnectedUser.get(sid)
 
+    def __delitem__(self, sid):
+        if sid in self:
+            del self[sid]
+            return True
+        return False
+    
     def getInputInStack(self, sid: str, data: dict):
-        user, _ = self.searchUsers(sid)
+        user = self.get(sid)
         user.msgStack.append(data)
 
     def displayUsersInfo(self):
@@ -65,7 +84,6 @@ class ConnectionManager:
             user.displaySelf()
 
     def searchUsers(self, sid: str, mode:str='sid'):
-        print(f"this is sid:{sid} and mode:{mode}")
         if mode == 'sid':
             for sido, user in self.ConnectedUser.items():
                 if sido == sid:

@@ -228,7 +228,7 @@ class ChatClass:
         is_raw_valid = input_symptom in self.__pd__.__all_symp__
         matched_symptom, is_match_valid = self.validDate(input_symptom, self.__pd__.__all_symp__) if not is_raw_valid else (input_symptom, True)
         print(answer['answer'])
-        if answer['atype'] == 'str' and answer['answer'].lower()!="yes" and answer['answer'].lower()!="no":
+        if answer['atype'] == 'str' and answer['answer']!="yes" and answer['answer']!="no":
             print(f"this is inside the if : {answer['answer']}")
             if matched_symptom and is_match_valid: # sarh nkis
                 if not is_raw_valid:
@@ -254,7 +254,7 @@ class ChatClass:
                     "p": None,
                     "r": None
                 }
-        
+        print(f"aytpe: {answer["atype"]}")
         if answer['qkey'] < 10:
             result, sym = self.main_sp(name, self.__pd__.__all_symp_col__, answer)
             print(f"this is result, sym : {result}, {sym}")

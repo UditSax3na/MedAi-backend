@@ -77,12 +77,12 @@ async def connect(sid, env):
         await sio.disconnect(sid)
     else:
         user = UserConnected(sid)
-        manager.connectUser(sid, user)
+        manager[sid] = user
         print("Client connected:", sid)
 
 @sio.event
 def disconnect(sid):
-    manager.disconnectUser(sid)
+    del manager[sid]
     print("Client disconnected:", sid)
 
 @sio.event
@@ -103,7 +103,7 @@ async def my_event(sid, data: dict)->None:
             await sio.emit("response", dic, to=sid)
 
         else:
-            user, _ = manager.searchUsers(sid)
+            user = manager[sid]
             if len(user.quesStack)!=0:
                 data.update({'qkey':user.quesStack[len(user.quesStack)-1]['qkey']})
             else:
@@ -159,7 +159,7 @@ async def set_name(sid, data) -> None:
     # else:
     user, _ = manager.searchUsers(sid)
     user.name = data['name']
-    user.email = data['email']
+    user.email = ''
     print(f"user.email: {user.email}")
     dic = {"q": f"Enter the main symptom you are experiencing Mr/Ms {user.name}", "qkey": 1, "ic": -1,"ql": [], "p": None, "r": None}
     print(f"dic : {dic}")
