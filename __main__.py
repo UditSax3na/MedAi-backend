@@ -31,6 +31,7 @@ sio = socketio.AsyncServer(
 
 manager = ConnectionManager()
 
+# Server crashing logic
 # @asynccontextmanager
 # async def lifespan(app: FastAPI):
 #     print("App is starting...")
@@ -39,6 +40,7 @@ manager = ConnectionManager()
 #     manager.ExistCleanup()
 
 # fastapiapp = FastAPI(lifespan=lifespan)
+
 fastapiapp = FastAPI()
 fastapiapp.add_middleware(
     CORSMiddleware,
@@ -55,7 +57,6 @@ templates = Jinja2Templates(directory=TEMPLATES_PATH)
 @fastapiapp.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse("testingws.html", {"request": request})
-
 
 app = socketio.ASGIApp(sio, other_asgi_app=fastapiapp)
 
@@ -189,3 +190,9 @@ if __name__ == "__main__":
 # cd MedAIBackend -> change current dir to MedAIBackend directory 
 # python -m MedAIBackend -> run MedAIBackend as a package
 # uvicorn MedAIBackend.__main__:app --reload run medaibackend.__main__:app with reloading feature
+
+# testing during run time commands
+# /arg-manager.ConnectedUser
+# /arg-manager["<socket_id>"]
+# /arg-manager["<socket_id>"].msgStack
+# /arg-manager["<socket_id>"].chat.user_inputs

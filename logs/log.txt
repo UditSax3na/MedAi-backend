@@ -1793,3 +1793,47 @@ TypeError: int() argument must be a string, a bytes-like object or a real number
 
 [2025-05-15 08:11:17] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
 ------------------------------------------------------------
+[2025-05-23 13:35:18] Error: 'ConnectionManager' object has no attribute 'get'
+[2025-05-23 13:35:18] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 113, in my_event
+    manager.getInputInStack(sid, data)
+  File "D:\Projects\MedAi\MedAIBackend\core\ServerMgmtClass.py", line 79, in getInputInStack
+    user = self.get(sid)
+           ^^^^^^^^
+AttributeError: 'ConnectionManager' object has no attribute 'get'
+
+[2025-05-23 13:35:18] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-23 13:54:11] Error: 'ConnectionManager' object has no attribute 'ConnectedUsers'
+[2025-05-23 13:54:11] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 96, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'ConnectionManager' object has no attribute 'ConnectedUsers'. Did you mean: 'ConnectedUser'?
+
+[2025-05-23 13:54:11] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-23 14:01:58] Error: list index out of range
+[2025-05-23 14:01:58] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 94, in my_event
+    arg = data['answer'].split('-')[1]
+          ~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+[2025-05-23 14:01:58] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------
+[2025-05-23 14:05:10] Error: 'UserConnected' object has no attribute 'user_inputs'
+[2025-05-23 14:05:10] Traceback:
+Traceback (most recent call last):
+  File "D:\Projects\MedAi\MedAIBackend\__main__.py", line 96, in my_event
+    'q':str(eval(arg)),
+            ^^^^^^^^^
+  File "<string>", line 1, in <module>
+AttributeError: 'UserConnected' object has no attribute 'user_inputs'
+
+[2025-05-23 14:05:10] File Location: D:\Projects\MedAi\MedAIBackend\__main__.py
+------------------------------------------------------------

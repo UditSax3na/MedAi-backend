@@ -70,13 +70,13 @@ class ConnectionManager:
         return self.ConnectedUser.get(sid)
 
     def __delitem__(self, sid):
-        if sid in self:
-            del self[sid]
+        if sid in self.ConnectedUser:
+            del self.ConnectedUser[sid]
             return True
         return False
     
     def getInputInStack(self, sid: str, data: dict):
-        user = self.get(sid)
+        user = self.ConnectedUser.get(sid)
         user.msgStack.append(data)
 
     def displayUsersInfo(self):
