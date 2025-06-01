@@ -2,7 +2,7 @@ venv/
 __pycache__/
 Datasets/
 Storage/
-log/
+log/logs.txt
 
 core/updateGitrepo.py
 core/tempChatClass.py
