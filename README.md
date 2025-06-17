@@ -31,17 +31,45 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
 
 ```
 /
-├── ChatClass.py
-├── PredictDiseases.py
-├── NlpClass.py
-├── SemanticClass.py
-├── SyntacticClass.py
-├── SocketClass.py
+├── Constants/
+│   └── path.py
+│
+├── core/
+│   ├── ChatClass.py
+│   ├── ImageToSymptoms.py
+│   ├── NlpClass.py
+│   ├── PredictDiseases.py
+│   ├── SemanticClass.py
+│   ├── ServerMgmtClass.py
+│   └── SyntacticClass.py
+│
 ├── Dataset/
+│   ├── imagedataset/
+│   ├── cleanDataset.csv
+│   ├── cleanDataset.pkl
+│   ├── Dataset.csv
+│   ├── SymDescriptions.csv
 │   ├── symptom_Description.csv
 │   ├── symptom_precaution.csv
+│   ├── Symptom_serverity.csv
 │   └── Dataset.csv
-└── Chat.tsx, useSocket.tsx (frontend interface)
+│
+├── logs/
+│   └── log.txt
+│
+├── Storage/
+│   ├── SavedData/
+│   ├── Savedencoders/
+│   ├── SavedModels/
+│   └── UserData/
+│
+├── templates/
+│   └── testingws.html
+│
+├── __init__.py
+├── __main__.py
+├── README.md
+└── requirements.txt
 ```
 
 ---
