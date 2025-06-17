@@ -86,7 +86,7 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
 
 ## Required Folders (External)
 
-To run this project correctly, please download and extract the following folders into the root directory of the project (i.e., they should be siblings to the `core/` or `medaibackend/` folder):
+To run this project correctly, please download and extract the following folders into the root directory of the project (i.e., they should be siblings to the `core/` or `Constants/` folder):
 
 - **Datasets Folder**  
   [Download Datasets.zip](https://drive.google.com/file/d/1rsxa99DE4Org9SgPEVNNH2W8Fs-_UzDM/view?usp=sharing)  
