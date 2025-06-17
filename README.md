@@ -20,7 +20,7 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
   - `ChatClass.py` for managing dialogue  
   - `PredictDiseases.py` for KNN-based prediction  
   - `NlpClass.py`, `SemanticClass.py`, `SyntacticClass.py` for handling user input  
-  - `SocketClass.py` for real-time WebSocket communication
+  - `__main__.py` handles real-time WebSocket communication and server startup logic
 
 - **Future-Capable**  
   Infrastructure designed to support **CNN-based image diagnosis** for visual symptoms.
@@ -53,6 +53,22 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
 - **Frontend**: React, WebSocket (via `useSocket.tsx`)  
 - **Data**: Custom CSVs for symptoms, precautions, and disease info  
 - **(Planned)**: TensorFlow-based CNN integration for image analysis
+
+---
+
+## Required Folders (External)
+
+To run this project correctly, please download and extract the following folders into the root directory of the project (i.e., they should be siblings to the `core/` or `medaibackend/` folder):
+
+- **Datasets Folder**  
+  [Download Datasets.zip](https://drive.google.com/file/d/1rsxa99DE4Org9SgPEVNNH2W8Fs-_UzDM/view?usp=sharing)  
+  → Extract to: `./Datasets/`
+
+- **Storage Folder**  
+  [Download Storage.zip](https://drive.google.com/file/d/1NR4hHNTIPPmOtbfaoE6jb-Kti64JB7oR/view?usp=sharing)  
+  → Extract to: `./Storage/`
+
+📌 **Important:** Make sure both folders are placed directly inside the project root, not inside any subfolder, to ensure proper path access by the code.
 
 ---
 
