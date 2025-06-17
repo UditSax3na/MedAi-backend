@@ -96,7 +96,7 @@ To run this project correctly, please download and extract the following folders
   [Download Storage.zip](https://drive.google.com/file/d/1NR4hHNTIPPmOtbfaoE6jb-Kti64JB7oR/view?usp=sharing)  
   → Extract to: `./Storage/`
 
-📌 **Important:** Make sure both folders are placed directly inside the project root, not inside any subfolder, to ensure proper path access by the code.
+**Important:** Make sure both folders are placed directly inside the project root, not inside any subfolder, to ensure proper path access by the code.
 
 ---
 
