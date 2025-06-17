@@ -6,3 +6,5 @@ log/logs.txt
 
 core/updateGitrepo.py
 core/tempChatClass.py
+
+Dockerfile
