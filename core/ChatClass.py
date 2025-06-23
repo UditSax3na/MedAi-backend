@@ -1,6 +1,6 @@
-from .PredictDiseases import PredictDiseases
-from .SemanticClass import SemanticClass
-from .SyntanticClass import SyntanticClass
+from core.PredictDiseases import PredictDiseases
+from core.SemanticClass import SemanticClass
+from core.SyntanticClass import SyntanticClass
 from difflib import get_close_matches
 
 
@@ -22,7 +22,7 @@ class ChatClass:
         self.flag = None
         self.flagsym = ""
 
-    @classmethod
+    @classmethod # decorators
     def dict_from(cls, data):
         obj = cls()
         obj.sim1 = data["sim1"]

@@ -1,9 +1,9 @@
 import sys
 import pickle
 
-from .ChatClass import ChatClass
-from .ImageToSymptoms import ImageToSymptoms
-from ..Constants.path import USERDATAFILE
+from ChatClass import ChatClass
+from ImageToSymptoms import ImageToSymptoms
+from Constants.path import USERDATAFILE
 
 class UserConnected:
     def __init__(self, sid: str):

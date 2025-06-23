@@ -7,9 +7,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 # Custom Modules Import
-from . import router  
-from .Constants.path import TEMPLATES_PATH, LOGFILE, ensure_dirs, USERDATAFILE
-from .core.ServerMgmtClass import UserConnected, ConnectionManager
+from __init__ import router  
+from Constants.path import TEMPLATES_PATH, LOGFILE, ensure_dirs, USERDATAFILE
+from core.ServerMgmtClass import UserConnected, ConnectionManager
 
 # Import
 import uvicorn
