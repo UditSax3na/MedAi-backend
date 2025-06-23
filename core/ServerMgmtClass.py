@@ -1,8 +1,8 @@
 import sys
 import pickle
 
-from ChatClass import ChatClass
-from ImageToSymptoms import ImageToSymptoms
+from core.ChatClass import ChatClass
+from core.ImageToSymptoms import ImageToSymptoms
 from Constants.path import USERDATAFILE
 
 class UserConnected:
