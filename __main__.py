@@ -5,9 +5,12 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from fastapi import APIRouter
+from pydantic import BaseModel
+from typing import Dict, Any
+from pathlib import Path
 
 # Custom Modules Import
-from __init__ import router  
 from Constants.path import TEMPLATES_PATH, LOGFILE, ensure_dirs, USERDATAFILE
 from core.ServerMgmtClass import UserConnected, ConnectionManager
 
@@ -16,6 +19,8 @@ import uvicorn
 import socketio
 import traceback
 import datetime
+import gdown
+import zipfile
 # import atexit
 # import signal
 
@@ -23,6 +28,45 @@ import datetime
 # making all the folders and files it they are missing
 ensure_dirs()
             
+class SymptomInput(BaseModel):
+    name: str
+    answer: Dict[str, Any]
+
+# function for extracting files and datasets
+def download_and_extract_from_drive(file_id: str, filename: str):
+    zip_path = Path(filename)
+    extract_dir = zip_path.stem  # removes .zip
+
+    if Path(extract_dir).exists():
+        print(f"[✓] {extract_dir}/ already exists. Skipping download.")
+        return
+
+    url = f"https://drive.google.com/uc?id={file_id}"
+    print(f"[↓] Downloading {filename}...")
+    gdown.download(url, str(zip_path), quiet=False)
+
+    print(f"[⇨] Extracting {filename}...")
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(".")
+
+    zip_path.unlink()  # delete zip file after extraction
+    print(f"[✔] {filename} downloaded and extracted.")
+
+
+router = APIRouter()
+
+@router.post("/status")
+def TestingStatus():
+    return {"message": "API is live!"}
+
+@router.post("/predict")
+def Predict_disease(inputText: SymptomInput):
+    from .core.ChatClass import ChatClass
+    chat = ChatClass()
+    print(f"inputText.answer : {inputText.answer}")
+    result = chat.chat_sp(inputText.name, inputText.answer)
+    return {"result": result}
+
 sio = socketio.AsyncServer(
     async_mode="asgi",
     cors_allowed_origins='*',
@@ -168,6 +212,14 @@ async def set_name(sid, data) -> None:
     user.quesStack.append(dic)
 
 if __name__ == "__main__":
+    # Your Google Drive file IDs (replace these with real ones)
+    datasets_id = "YOUR_DATASETS_FILE_ID"
+    storage_id = "YOUR_STORAGE_FILE_ID"
+
+    # Download and extract
+    download_and_extract_from_drive(datasets_id, "Datasets.zip")
+    download_and_extract_from_drive(storage_id, "Storage.zip")
+
     try:
         uvicorn.run(app, host="127.0.0.1", port=8000)
     except Exception as e:

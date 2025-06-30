@@ -89,11 +89,11 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
 To run this project correctly, please download and extract the following folders into the root directory of the project (i.e., they should be siblings to the `core/` or `Constants/` folder):
 
 - **Datasets Folder**  
-  [Download Datasets.zip](https://drive.google.com/file/d/1rsxa99DE4Org9SgPEVNNH2W8Fs-_UzDM/view?usp=sharing)  
+  [Download Datasets.zip](https://drive.google.com/file/d/1iiyc0h8mdIdfPovTGg0p9L0Pg_Q7-4dU/view?usp=sharing)  
   → Extract to: `./Datasets/`
 
 - **Storage Folder**  
-  [Download Storage.zip](https://drive.google.com/file/d/1NR4hHNTIPPmOtbfaoE6jb-Kti64JB7oR/view?usp=sharing)  
+  [Download Storage.zip](https://drive.google.com/file/d/1gpKdex5WhrLHA6Ndqz6P-KFOfxVOLlml/view?usp=sharing)  
   → Extract to: `./Storage/`
 
 **Important:** Make sure both folders are placed directly inside the project root, not inside any subfolder, to ensure proper path access by the code.

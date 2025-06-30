@@ -10,3 +10,5 @@ jinja2
 scikit-learn
 tensorflow
 pillow
+gdown
+rarfile
