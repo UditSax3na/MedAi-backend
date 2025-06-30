@@ -1,10 +1,12 @@
 venv/
 __pycache__/
-Datasets/
-Storage/
-log/logs.txt
+Datasets/imagedataset/
+Datasets/tempimagetesting/
 
+log/logs.txt
+Storage/SavedData/train_data.npz
 core/updateGitrepo.py
 core/tempChatClass.py
-
 Dockerfile
+.env
+testing.py

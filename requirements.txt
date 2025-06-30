@@ -12,3 +12,5 @@ tensorflow
 pillow
 gdown
 rarfile
+dotenv
+pymongo

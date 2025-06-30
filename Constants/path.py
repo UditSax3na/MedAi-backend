@@ -1,5 +1,14 @@
 # from os.path import dirname, join
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# loading the environment variables
+load_dotenv()
+
+# Some Constants
+ENV = os.getenv('ENV')
+TRAINING_DATAURL = os.getenv('TRAINING_DATAFI')
 
 # paths for parent directory
 PARENT_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +35,7 @@ USERSDATASAVED = STORAGE_PATH / 'UserData'
 KNNMODEL_PATH = SAVED_MODEL_PATH / "KNN_model.pkl"
 LENCODER_PATH = SAVED_ENCODER_PATH / "encoder.pkl"
 IMAGE_MODEL = SAVED_MODEL_PATH / 'imageModel.keras'
-TRAINING_DATAFI = SAVEDDATA / 'train_data.npz'
+TRAINING_DATAFI = SAVEDDATA / 'train_data.npz' 
 VALIDATION_DATAFI = SAVEDDATA / 'val_data.npz' 
 CLASSINDICES = SAVEDDATA / 'class_indices.npy'
 USERDATAFILE = USERSDATASAVED / 'userData.pkl' # User Data Save

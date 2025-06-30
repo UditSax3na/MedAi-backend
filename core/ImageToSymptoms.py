@@ -9,7 +9,7 @@ from tensorflow.keras import layers, models
 from tensorflow.keras.preprocessing import image as kerasimg
 from pathlib import Path
 
-from ..Constants.path import IMAGE_DATASET_FOLDER, IMAGE_MODEL,VALIDATION_DATAFI, TRAINING_DATAFI, IMAGE_MODEL, CLASSINDICES
+from Constants.path import IMAGE_DATASET_FOLDER, IMAGE_MODEL,VALIDATION_DATAFI, TRAINING_DATAFI, IMAGE_MODEL, CLASSINDICES
 
 class ImageToSymptoms:
     def __init__(self):
