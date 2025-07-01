@@ -17,6 +17,7 @@ from core.ServerMgmtClass import UserConnected, ConnectionManager
 
 # Import
 import uvicorn
+import requests
 import socketio
 import traceback
 import datetime
@@ -32,9 +33,6 @@ ensure_dirs()
 class SymptomInput(BaseModel):
     name: str
     answer: Dict[str, Any]
-
-import requests
-from pathlib import Path
 
 def download_from_gdrive(file_id, dest_path):
     URL = "https://drive.google.com/uc?export=download"
