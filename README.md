@@ -20,7 +20,7 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
   - `ChatClass.py` for managing dialogue  
   - `PredictDiseases.py` for KNN-based prediction  
   - `NlpClass.py`, `SemanticClass.py`, `SyntacticClass.py` for handling user input  
-  - `__main__.py` handles real-time WebSocket communication and server startup logic
+  - `main.py` handles real-time WebSocket communication and server startup logic
 
 - **Future-Capable**  
   Infrastructure designed to support **CNN-based image diagnosis** for visual symptoms.
@@ -66,12 +66,13 @@ MedAI is a real-time AI assistant that interacts with users through chat, predic
 ├── templates/
 │   └── testingws.html
 │
-├── __init__.py
-├── __main__.py
+├── .env # contain few things (you have to create this file)
+├── .env.example # contain what .env should contains
+├── main.py
 ├── README.md
 └── requirements.txt
 ```
-
+> This structure contain files like .env, .env.example, __ main__.py renamed to main.py just for the hosting purposes 
 ---
 
 ## Tech Stack
@@ -119,10 +120,9 @@ To run this project correctly, please download and extract the following folders
    ```bash
    pip install -r requirements.txt
    ```
-
 4. **Run the backend**
    ```bash
-   uvicorn app:app --reload
+   python main.py
    ```
 
 5. **Start the frontend client**  
