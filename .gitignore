@@ -2,8 +2,8 @@ venv/
 __pycache__/
 Datasets/imagedataset/
 Datasets/tempimagetesting/
+logs/
 
-log/logs.txt
 Storage/SavedData/train_data.npz
 core/updateGitrepo.py
 core/tempChatClass.py
